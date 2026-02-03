@@ -1,0 +1,2152 @@
+[
+    {
+        "label": "PO 801357_GWA",
+        "assignedToIdList": [],
+        "statusId": 4,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Bautista checking ETA, SKU now released. Should have update by 01/10\n\n\nLAPTOP READS CANCELLED as of 01/05 - No Update on laptop as of 10/31 - Est ship date 10/17 - still stuck as of 11/25",
+        "value": 2760,
+        "dmrOrders": [
+            {
+                "label": "P25-00095_GWA",
+                "statusId": 4,
+                "orderDate": "",
+                "estimatedArrival": "2026-01-02",
+                "notes": "Docks on island, pending laptop shipment; follow up sent to jackson 10/30. as of 11/7, bautista estimates 1/2/26 from the factory.\n\nrachel paulino asking for an update 12/16/2025",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO 900087_GWA",
+        "assignedToIdList": [],
+        "statusId": 4,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Bautista UPDATE: Est ship 01/20 \n\nLAPTOP READS CANCELLED as of 01/05 - Est. Ship 11/07 - No update as of 11/25",
+        "value": 1380,
+        "dmrOrders": [
+            {
+                "label": "P25-00123",
+                "statusId": 3,
+                "orderDate": "2025-10-25",
+                "estimatedArrival": "",
+                "notes": "as of 1/9/26:  21NYS94J00  Expected to ship 01/20   Expected to arrive 01/30 New order number is: K000007453",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P262820003_MCOG",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 4,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-01-12",
+        "notes": "JACKSON working on getting order reprocessed \"Unacceptable (in Chinese accent)\"\n\nLaptops Returned to Lenovo, no update as of 01/05 - Laptops Stuck in NY, UPS internal system reads delivery in NY - Working with Lenovo 12/05 to resolve",
+        "value": 52228,
+        "dmrOrders": [
+            {
+                "label": "P25-00120",
+                "statusId": 4,
+                "orderDate": "2025-10-25",
+                "estimatedArrival": "2025-11-20",
+                "notes": "Laptops Returned to Lenovo - NEED UPDATE - Laptops - SHIPPED. UPS tracking: 1ZK8C186D900162713 - Delayed in NY 11/11, docks and mice delivered 11/07, toploads shipped as of 11/17 1ZGH09586709940984\n1ZGH09586709940911\n1ZGH09586709940957",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00121",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "DVD Burner. Delivered to DMR 11/4",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00463 & Q25-00534_Flores",
+        "assignedToIdList": [],
+        "statusId": 3,
+        "priorityId": 3,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "",
+        "value": 30725,
+        "dmrOrders": [
+            {
+                "label": "P25-00112_Flores",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "FS.com - order placed 10/24. DELIVERED 11/4",
+                "assignedToIdList": [
+                    21
+                ]
+            },
+            {
+                "label": "P25-00111 _Flores",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "2025-11-13",
+                "notes": "optics + EX4300s both shipped. DHL tracking: 5105591105. DELIVERED to DMR. 11/24\n\nEX4400-24X, EX4000-24T,\nDHL: 30 5425 7824\n\n EX4000-48T still pending. follow up sent 11/25\nDHl tracking: 46 9676 3326",
+                "assignedToIdList": [
+                    21
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO 801116_GWA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 4,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2025-11-12",
+        "notes": "LAPTOP READS CANCELLED as of 01/05 - Partially Shipped, Pending 2x Laptops - est 10/17, follow up sent to bautista 11/6",
+        "value": 2760,
+        "dmrOrders": [
+            {
+                "label": "P25-00092_GWA",
+                "statusId": 4,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Bautista checking ETA, SKU now released. Should have update by 01/10\n\n\nNEED UPDATE - Partially Shipped, Pending 2x Laptops - est 10/17. as of 11/7, bautista estimates 1/2/26 from the factory.",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00114_DISID",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 3,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Bautista checking ETA, SKU now released. Should have update by 01/10\n\n\nStill Backordered as of 01/05 - NEED UPDATE - Est. Ship 11/05. SAP 4405500147. Backordered until 12/11/25. rose.guerrero@disid.guam.gov follow up",
+        "value": 2929,
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00040_FSMDB",
+        "assignedToIdList": [],
+        "statusId": 4,
+        "priorityId": 1,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "VERTIV GXT5 order returned to factory. need new DHL quote.",
+        "value": 132972,
+        "dmrOrders": [
+            {
+                "label": "vertiv deal reg resubmission",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "verify place of delivery for returned order",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "awaiting DHL quote with shipping protection",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "ingram/vertiv seeking approval to reprocess same order",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "there's a second order in portal. confirming we won't be charged for it",
+                "assignedToIdList": []
+            },
+            {
+                "label": "fill out credit card authorization for DHL",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "vertiv needs to provide dangerous goods declaration",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "vertiv requesting proof of delivery from DHL for prior shipment returned",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600220_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 3,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-01-19",
+        "notes": "NEED UPDATE: Bautism asking for SAP after we told him there's no SAP\n\n\nLaptops Delivered - no update on acc as of 12/16",
+        "value": 5877,
+        "dmrOrders": [
+            {
+                "label": "P25-00131",
+                "statusId": 3,
+                "orderDate": "2025-11-25",
+                "estimatedArrival": "2025-12-20",
+                "notes": "Est Ship 12/11. order canceled 1/20. re-placed same day.\n\nUPDATE 1/20: SAP: K000031840 ETA is on 1/29 \n\n12N8GAR1US\nDelivery number: L400093496\nTracking numbers: 1ZGH09586712148236 / 1ZGH09586712148245 / 1ZGH09586712148254\n\n4X41C12469\nDelivery number: L400093496\nTracking number: 1ZGH09586712148254\n\n40AY0090US\nDelivery number: L400093496\nTracking number: 1ZGH09586712148263",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00610_Ambros",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 4,
+        "priorityId": 1,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Bautista UPDATE: est ship 01/10 Laptop, est ship 01/12 Monitor\n\n\nLAPTOP AND MONITOR READS BACKORDERED/CANCELLED - NEED UPDATE - POC Confirmed 12/4, quotes refreshed 12/4",
+        "value": 3096,
+        "dmrOrders": [
+            {
+                "label": "P25-00137",
+                "statusId": 3,
+                "orderDate": "2025-12-16",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00138",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "separate PO, not uploaded as of 12/16 UPS TRACKING: 1ZGH09586711191995",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00627_CAI",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 3,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Possible issue, could just be an IM system problem. Will check again 01/12\n\n POC Confirmed 12/18, quote still valid",
+        "value": 816,
+        "dmrOrders": [
+            {
+                "label": "P25-00142",
+                "statusId": 3,
+                "orderDate": "2025-12-30",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P60-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "Select Plus Licenses",
+        "value": 783,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0008373_GSA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-03-31",
+        "notes": "",
+        "value": 39039,
+        "dmrOrders": [
+            {
+                "label": "P26-00001",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P26-00002",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DT2025-0539_Dusit",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 6,
+        "priorityId": 3,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "PO Recv 01/02, POC Confirmed 01/05",
+        "value": 15550,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0008429_DPHSS",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-07-04",
+        "notes": "",
+        "value": 48119,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0008457_DRT",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-04-06",
+        "notes": "PO Recv & POC Confirmed 01/06",
+        "value": 76275,
+        "dmrOrders": [
+            {
+                "label": "P26-00001",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P26-00002",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO0008466_CQA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-04-06",
+        "notes": "",
+        "value": 56610,
+        "dmrOrders": [
+            {
+                "label": "P26-00001",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P26-00002",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO0008557_DPHSS",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-04-09",
+        "notes": "",
+        "value": 27850,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0008558_DPHSS",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-04-09",
+        "notes": "",
+        "value": 30510,
+        "dmrOrders": []
+    },
+    {
+        "label": "DMR Q26-00007",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 3,
+        "clientTypeId": 1,
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "",
+        "value": 5079,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0008429_DPHSS",
+        "assignedToIdList": [],
+        "statusId": 6,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-07-04",
+        "notes": "Client PO Received 1/5/26. DMR POs created 1/16. Ordered 1/21.",
+        "value": 48119,
+        "dmrOrders": [
+            {
+                "label": "P26-00006",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P26-00007",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P26-00008",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO0008967_AGO",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 6,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 1,
+        "dueDate": "2026-04-21",
+        "notes": "",
+        "value": 253310,
+        "dmrOrders": []
+    },
+    {
+        "label": "",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 1,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "DMR Q25-00592_PnR",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 2,
+        "dueDate": "",
+        "notes": "Landed 12/18",
+        "value": 1136,
+        "dmrOrders": [
+            {
+                "label": "P25-00134",
+                "statusId": "",
+                "orderDate": "2025-12-05",
+                "estimatedArrival": "2025-12-18",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO P2600262_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-01-30",
+        "notes": "Kensington lock PO not ordered yet.",
+        "value": 3418,
+        "dmrOrders": [
+            {
+                "label": "P25-00135",
+                "statusId": "",
+                "orderDate": "2025-12-05",
+                "estimatedArrival": "",
+                "notes": "Checked in 01/06\n\nLanded, not yet checked in. No Est ship date as of 12/05 - Laptops est ship 12/14 - New est ship 12/24\nAccessories shipped, est arrival 12/18",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# 6768_TRANE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 3,
+        "clientTypeId": 1,
+        "categoryId": 2,
+        "dueDate": "",
+        "notes": "Landed 01/06\n\n Received 11/13, POC Confirmed 11/18",
+        "value": 6490,
+        "dmrOrders": [
+            {
+                "label": "P25-00130",
+                "statusId": "",
+                "orderDate": "2025-11-25",
+                "estimatedArrival": "2026-01-09",
+                "notes": "Est Ship 12/12 - Shipped as of 01/05",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# PO0006434_GPD",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-01-15",
+        "notes": "Checked in 01/06\n\nM70q Delivered 12/30, Not Yet Checked in",
+        "value": 2804,
+        "dmrOrders": [
+            {
+                "label": "P25-00124",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "",
+                "notes": "T24s Shipped 11/21 - arrived 11/25, M70q est Ship 01/27",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600243_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-02-01",
+        "notes": "ALL received marked \"prepping\" by Evie on Shipment log\n\nPOC Confirmed 12/4, quotes refreshed 12/4",
+        "value": 5127,
+        "dmrOrders": [
+            {
+                "label": "P25-00136",
+                "statusId": 3,
+                "orderDate": "2025-12-16",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "P2600256_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-02-13",
+        "notes": "All recv 01/06, marked \"prepping\" by Evie on shipment log",
+        "value": 1709,
+        "dmrOrders": [
+            {
+                "label": "P25-00136",
+                "statusId": "",
+                "orderDate": "2025-12-16",
+                "estimatedArrival": "2026-01-15",
+                "notes": "Accessories Landed, Pending Laptop",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO260194_GHURA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-02-03",
+        "notes": "Bautista UPDATE: EST ship 01/10 \n\nLAPTOPS READS CANCELLED - NEED UPDATE - POC confirmed, quote refresh completed 11/13 - Sales Hold as of 11/25\n\nUPS Tracking:1ZK8C186D900378419 / 1ZK8C186D900378393 /\n1ZK8C186D900378428 / 1ZK8C186D900378400",
+        "value": 6188,
+        "dmrOrders": [
+            {
+                "label": "P25-00129",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "order placed 11/18 - Est Ship Date 01/08 LANDED 1/20. PENDING DELIVERY AS OF 1/20",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO0008244_GPD",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 2,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 2,
+        "dueDate": "2026-03-24",
+        "notes": "Monitors & acc shipped, no ETA yet. System est ship 01/14. arrived 1/21. pending delivery.",
+        "value": 12204,
+        "dmrOrders": [
+            {
+                "label": "P25-00140",
+                "statusId": "",
+                "orderDate": "2025-12-30",
+                "estimatedArrival": "",
+                "notes": "Lenovo",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00141",
+                "statusId": "",
+                "orderDate": "2025-12-30",
+                "estimatedArrival": "",
+                "notes": "APC shipped via DHL",
+                "assignedToIdList": []
+            },
+            {
+                "label": "",
+                "statusId": "",
+                "orderDate": "2026-01-15",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00464_Ambros",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Sold from old Stock",
+        "value": 1600,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO 31087-004207_DK",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 1475,
+        "dmrOrders": [
+            {
+                "label": "Professional Services (BOH)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00413",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "SW CCA Delivered",
+        "value": 1584,
+        "dmrOrders": [
+            {
+                "label": "P25-00077_PPC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00081_Exxon",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 15932,
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00088_DRT",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 4674,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO 20250842-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Select Plus Licenses",
+        "value": 783,
+        "dmrOrders": [
+            {
+                "label": "P25-00086_GDOE",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00094_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Select Plus Licenses",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PO 0497_PFC",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 2407,
+        "dmrOrders": [
+            {
+                "label": "P25-00079_PFC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00411",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-10-25",
+        "notes": "completed Sept. 9",
+        "value": 6060,
+        "dmrOrders": [
+            {
+                "label": "P25-00075_GVB",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00082_GVB",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PO 2025-12_PDSC",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered to customer 9/12/25",
+        "value": 7792,
+        "dmrOrders": [
+            {
+                "label": "P25-00076_PDSC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO0006111_GOV",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "delivered to client 8/26",
+        "value": 462,
+        "dmrOrders": [
+            {
+                "label": "P25-00078_GOV",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00089_DPR",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "E-Delivered",
+        "value": 815,
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00115_GGRF",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Cutover completed 10/27",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00118_GPA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "IM AU LTSC Licenses",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00093_MCOG",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "fully invoiced & delivered 9/26/25",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00104_PAG",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Order Placed 10/13 for SSL cert",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PO 2025-088_PDSC",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 8411,
+        "dmrOrders": [
+            {
+                "label": "P25-00074_PDSC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "2025-10-24",
+                "notes": "warranty sku delivered. product delivered to customer. delivery acknowledgement uploaded 10/27/25",
+                "assignedToIdList": [
+                    21
+                ]
+            }
+        ]
+    },
+    {
+        "label": "P25-00087_GPA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered 10/23",
+        "value": 14240,
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00091_JOG",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered to customer 10/21",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00090_JOG",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered to customer 10/21",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00105_Compacific",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Order Placed 10/14. final payment received from compacific 10/29. order at DGX warehouse. completed.",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PO# 20251211-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "",
+        "value": 3236,
+        "dmrOrders": [
+            {
+                "label": "P25-00107_GDOE",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Select Plus Licenses, ordered 10/16",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00106_GDOE",
+                "statusId": 3,
+                "orderDate": "",
+                "estimatedArrival": "2025-12-23",
+                "notes": "all items shipped. all items arrived 10/28",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "DMR Q25-00479",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Pending Setup by Service (Cade)",
+        "value": 1007,
+        "dmrOrders": [
+            {
+                "label": "P25-00083_PPC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# 20251132_GDOE",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-12-22",
+        "notes": "Received by DMR 10/17. Pending delivery to customer",
+        "value": 7821,
+        "dmrOrders": [
+            {
+                "label": "P25-00101",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00107",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# 20250912-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Last Shipment arrived 10/20",
+        "value": 13760,
+        "dmrOrders": [
+            {
+                "label": "P25-00097",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# 20251110-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Shipment arrived 10/24",
+        "value": 2778,
+        "dmrOrders": [
+            {
+                "label": "P25-00100",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO260018_UOG",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered 10/30",
+        "value": 2145,
+        "dmrOrders": [
+            {
+                "label": "P25-00110",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO56Z00090_GGRF",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered 11/07",
+        "value": 6488,
+        "dmrOrders": [
+            {
+                "label": "P25-00067",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# 34037_GPA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Delivered 11/06",
+        "value": 18342,
+        "dmrOrders": [
+            {
+                "label": "P25-00119_GPA",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "IM AU LTSC Licenses",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00069_GPA",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "notice of default. ingram billed to their account, we cannot claim against DHL. replacement order placed on ingram 10/30. Delivered to Customer 11/6",
+                "assignedToIdList": [
+                    21
+                ]
+            },
+            {
+                "label": "P25-00073",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00072",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00116_GGRF",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "corresponding microsoft subscription already purchased. carlo: cloudally will be purchased upon golive tonight 10/24. cloudally activated 11/18",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00045_UOG",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 1,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "MISSING MONITOR. shipped with CEVA. LONG DELAYED. RECEIVED 11/25. DELIVERED 11/25",
+        "value": "",
+        "dmrOrders": [
+            {
+                "label": "need lenovo or CEVA to pay TRIPLE B for shipping.",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00084_Ambros",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Quote signed 11/17, New PO sent to Ingram 11/18",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0007627_BWA",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-19",
+        "notes": "Order Placed 11/08. System delivered to DMR 11/18. Accessory shipped, est. arrival 11/20",
+        "value": 2517,
+        "dmrOrders": [
+            {
+                "label": "P25-00126",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Order Placed 11/08. System delivered to DMR 11/18. Accessory shipped, est. arrival 11/20. UPS tracking: 1ZGH09586709884018 - Delivered 11/25.",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "P25-00113_DPW",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "2025-12-23",
+        "notes": "Delivered to DMR 11/14. Checked in as of 11/18",
+        "value": 3503,
+        "dmrOrders": []
+    },
+    {
+        "label": "PO0007359_DPW",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "UPS Tracking 3960427779",
+        "value": 149516,
+        "dmrOrders": [
+            {
+                "label": "P25-00102_DPW",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "all received 10/30",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00103_DPW",
+                "statusId": "",
+                "orderDate": "2025-10-09",
+                "estimatedArrival": "2025-11-14",
+                "notes": "order placed 10/7. lenovo issue with contract. resolved 10/25. order released 10/31. shipped 11/1. ARRIVED 11/13 UPS Tracking: 3960427779",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00109_DPW",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Pending Arrival, with TripleB. Shipment # S00866452.  On Island. Est. Delivery week of 11/17. joe guerrero 671-488-5805.",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2501215_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-11-04",
+        "notes": "Transiting through KY as of 12/05",
+        "value": 1488,
+        "dmrOrders": [
+            {
+                "label": "P25-00085",
+                "statusId": "",
+                "orderDate": "2025-09-23",
+                "estimatedArrival": "",
+                "notes": "E16s shipped. UPS tracking: 1ZK8C136D900313706. est. delivery 11/24. T14s still pending ship. est. 11/28",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00096",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# P2501218_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-11-04",
+        "notes": "Transiting through KY as of 12/05",
+        "value": 2976,
+        "dmrOrders": [
+            {
+                "label": "P25-00085",
+                "statusId": "",
+                "orderDate": "2025-09-23",
+                "estimatedArrival": "",
+                "notes": "E16s shipped. UPS tracking: 1ZK8C136D900313706. est. delivery 11/24. T14s still pending ship. est. 11/28",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00096",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600157_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-03",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 1986,
+        "dmrOrders": [
+            {
+                "label": "P25-00127 (copy)",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "2025-12-10",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128 (copy)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600142_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-04",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 5127,
+        "dmrOrders": [
+            {
+                "label": "P25-00127 (copy)",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "2025-12-10",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128 (copy)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600135_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-03",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 8545,
+        "dmrOrders": [
+            {
+                "label": "P25-00127 (copy)",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "2025-12-10",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128 (copy)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600133_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-12-30",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 4220,
+        "dmrOrders": [
+            {
+                "label": "P25-00127",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600134_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-12-30",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 3418,
+        "dmrOrders": [
+            {
+                "label": "P25-00127 (copy)",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "2025-12-10",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128 (copy)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# P2600152_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-03",
+        "notes": "Order Placed 11/08 - Laptops transiting through KY as of 12/05",
+        "value": 5404,
+        "dmrOrders": [
+            {
+                "label": "P25-00127 (copy)",
+                "statusId": "",
+                "orderDate": "2025-11-08",
+                "estimatedArrival": "2025-12-10",
+                "notes": "Lenovo PO: Accessories delivered to DMR 11/18. 21SSS53900 shipped. UPS Tracking: 1ZK8C136D900371251 \n21QDS7DV00 SHIPPED. UPS TRACKING 1ZK8C136D900398287",
+                "assignedToIdList": [
+                    22
+                ]
+            },
+            {
+                "label": "P25-00128 (copy)",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "Amazon PO: Kensington Locks - No visibility on Amazon Portal for Company Orders",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "PO# 2026-208_JOG",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "POC confirmed. quote refresh completed 10/30. Order Placed 11/19",
+        "value": 1064,
+        "dmrOrders": [
+            {
+                "label": "P25-00125",
+                "statusId": "",
+                "orderDate": "2025-11-19",
+                "estimatedArrival": "2025-12-18",
+                "notes": "Shipped 12/07",
+                "assignedToIdList": [
+                    22
+                ]
+            }
+        ]
+    },
+    {
+        "label": "20251056-00_GDOE",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 1,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-12-18",
+        "notes": "Est. Ship 11/28 - new date 12/05",
+        "value": 125280,
+        "dmrOrders": [
+            {
+                "label": "P25-00099_GDOE",
+                "statusId": "",
+                "orderDate": "2025-10-08",
+                "estimatedArrival": "",
+                "notes": "order released. SAP 4405517439. expected ship 11/25 per jackson 11/4 - Ship Date now reads 12/02 as of 12/01. - SHIPPED 12/07",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# P2501296_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-11-04",
+        "notes": "Transiting through KY as of 12/05",
+        "value": 1986,
+        "dmrOrders": [
+            {
+                "label": "P25-00085",
+                "statusId": "",
+                "orderDate": "2025-09-23",
+                "estimatedArrival": "",
+                "notes": "E16s shipped. UPS tracking: 1ZK8C136D900313706. est. delivery 11/24. T14s shipped 11/27 tracking 1ZK8C136D900398063. Transiting through KY as of 12/05",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO# P2501309_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-11-04",
+        "notes": "Transiting through KY as of 12/05",
+        "value": 2207,
+        "dmrOrders": [
+            {
+                "label": "P25-00085",
+                "statusId": "",
+                "orderDate": "2025-09-23",
+                "estimatedArrival": "",
+                "notes": "E16s shipped. UPS tracking: 1ZK8C136D900313706. est. delivery 11/24. T14s still pending ship. est. 11/28",
+                "assignedToIdList": []
+            },
+            {
+                "label": "P25-00096",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "P25-00085_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2025-11-04",
+        "notes": "E16s shipped. UPS tracking: 1ZK8C136D900313706. DELIVERED 11/25. T14s SHIPPED. UPS TRACKING 1ZK8C136D900398063. DELIVERED TO DMR 12/9/25",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00096_GCC",
+        "assignedToIdList": [
+            22
+        ],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "delivered to DMR, waiting on delivery of P25-00085",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00108_GHURA",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "GHURA MC60 & MS30,  MC60 shipping 11/17. ISSUE with MS30. returned to sender. \nMC60 UPS tracking: 1ZB60715D920054163 DELIVERED\n\nupdated tracking for MS30: 1Z9918AW0444448006 DELIVERY 12/18",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00098_AGO",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 1,
+        "priorityId": 3,
+        "clientTypeId": "",
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Set to Auto-Renew 11/27",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "DMR Q25-00304_PFC",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 2,
+        "clientTypeId": 1,
+        "categoryId": 3,
+        "dueDate": "",
+        "notes": "Partially Delivered 10/01/2025",
+        "value": 64090,
+        "dmrOrders": [
+            {
+                "label": "P25-00080_PFC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "E-Delivered according to IM",
+                "assignedToIdList": [
+                    21
+                ]
+            },
+            {
+                "label": "P25-00058_PFC",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "on-island, pending delivery",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "PO66Z00051_GGRF",
+        "assignedToIdList": [],
+        "statusId": 1,
+        "priorityId": 4,
+        "clientTypeId": 2,
+        "categoryId": 3,
+        "dueDate": "2026-01-07",
+        "notes": "EST DELIVERY: 01/13 as of 01/09 \nDHL Tracking: 3644926574\n\nNew Est Ship 01/06 - Est ship 12/17, on sales hold - Now 12/23",
+        "value": 707,
+        "dmrOrders": [
+            {
+                "label": "P25-00132",
+                "statusId": 3,
+                "orderDate": "2025-12-02",
+                "estimatedArrival": "2026-01-13",
+                "notes": "ORDER PLACED 12/2/25",
+                "assignedToIdList": []
+            },
+            {
+                "label": "",
+                "statusId": "",
+                "orderDate": "2025-10-25",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            },
+            {
+                "label": "",
+                "statusId": "",
+                "orderDate": "",
+                "estimatedArrival": "",
+                "notes": "",
+                "assignedToIdList": []
+            }
+        ]
+    },
+    {
+        "label": "24-7906 FSMDB Lenovo Warranty Issuex",
+        "assignedToIdList": [
+            21
+        ],
+        "statusId": 2,
+        "priorityId": 1,
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "P25-00027. Warranty portion of order was cancelled. quotes submitted. new order pending accounting review 11/4.\n\nreplacement warranty order completed. sent keys to carlo",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "P25-00024 Takagi Server Warranty Issue",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "NEED LENOVO TO PROCESS THE WARRANTY ORDER WHICH WAS PLACED.",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "TDSynnex Adobe Issue",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "have line of credit report from CFIRST. need balance sheets, etc.",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "KNOWiNK",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "DHL Tracking: 2377990845",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "Pest Control Workeasy",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "GMHA server & hours",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "juniper pricing for OTECH/DPHSS bid",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PAG STUFF FOR workspace",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "PIICO email",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "VARO adobe issue",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "GHD PO",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "moyindustries/southpacific environmental domain thing",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "HCI warranty issue",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": "",
+        "dmrOrders": []
+    },
+    {
+        "label": "",
+        "assignedToIdList": [],
+        "statusId": "",
+        "priorityId": "",
+        "clientTypeId": "",
+        "categoryId": 4,
+        "dueDate": "",
+        "notes": "",
+        "value": 0,
+        "dmrOrders": []
+    }
+]

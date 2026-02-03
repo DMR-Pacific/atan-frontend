@@ -1,0 +1,122 @@
+
+You will be provided with a list of form field definitions (for example, from a YAML or JSON configuration). 
+Each field describes how an input should appear and behave — including its label, type, placeholder, visibility rules, and validation requirements. 
+Your task is to dynamically generate the corresponding React form elements using React Hook Form and CoreUI components. 
+
+Rules: 
+1. Add a submit button at the bottom of the form
+2. Only add the validation rules explicitly stated with the field
+3. Generate the form fields only and their validation rules
+4. Generate the questions in the same order they are in the fields array 
+5. For any form field where inputType == 'select' and inputProps.source is "fromUrl", you need to write a useEffect hook that fetches the options from the URL specified in inputProps.retrievalUrl and sets them into a state variable. 
+const [<<fieldName>>Options, set<<fieldName>>Options] = useState<{ label: string; value: string }[]>([])
+
+useEffect(() => {
+    const url = "http://base/<<selectFieldUrl>>"
+
+    const fetchSelectFieldOptions = async () => {
+        try {
+            const response = await axios.get(url)
+
+            const options = response.data 
+
+            // mapping function
+            mappedOptions = options.map(opt => ({label: opt.<<selectField.fieldField>>, value: opt.<<selectField.labelField>>}))
+            
+            setSelectFieldOptions(mappedOptions)
+        } catch (err) {
+            setErrorMessages([{
+                message: "Failed to fetch options for <<selectFieldName>>"
+            }])
+        }
+    }
+}, [])
+
+
+For inputTypes text, email, password, tel, url:
+<div className="mb-3">
+    <FormLabel 
+        htmlFor="<<fieldName>>"
+        invalid={!!errors.<<fieldName>>}
+    >
+        <<label>>
+    </FormLabel>
+    <DmrFormInput
+    id="<<fieldName>>"
+    type="<<inputType>>"
+    placeholder="<<placeholder>>"
+    {...register("<<fieldName>>", VALIDATION_RULES)}
+    invalid={!!errors.<<fieldName>>}
+    feedbackInvalid={errors.<<fieldName>>?.message}
+    />
+</div>
+
+For inputType textarea:
+<DmrFormTextarea
+  id="<<fieldName>>"
+  rows={<<rows>>}
+  placeholder="<<placeholder>>"
+  {...register("<<fieldName>>", VALIDATION_RULES)}
+  invalid={!!errors.<<fieldName>>}
+  feedbackInvalid={errors.<<fieldName>>?.message}
+/>
+
+For inputType select: 
+First check inputProps.source
+
+if inputProps.source == 'manual' 
+<DmrFormSelect
+    id="<<fieldName>>"
+    {...register("<<fieldName>>", VALIDATION_RULES)}
+    invalid={!!errors.<<fieldName>>}
+    feedbackInvalid={errors.<<fieldName>>?.message}
+>
+  <option> 
+    <<placeholder if it exists>>
+  </option>
+  {/* Add an empty option if allowEmpty is true, even if there is a placeholder */}
+  <option value="">
+  </option>
+  <option value="<<value>>"><<label>></option>
+</DmrFormSelect>
+
+
+For inputType select: 
+First check inputProps.source
+
+if inputProps.source == 'fromUrl' 
+<DmrFormSelect
+    id="<<fieldName>>"
+    {...register("<<fieldName>>", VALIDATION_RULES)}
+    invalid={!!errors.<<fieldName>>}
+    feedbackInvalid={errors.<<fieldName>>?.message.toString()}
+>
+<option value="" > 
+    <<placeholder if it exists>>
+  </option>
+  {/* Add an empty option if allowEmpty is true, even if there is a placeholder */}
+  <option value=""></option>
+  {<<fieldName>>Options.map((opt, i) => (<option key={i} value={opt.value}>{opt.label}</option>))}
+</DmrFormSelect>
+
+inputType radio:
+  {/* Loop through all radio options */}
+  {field.inputProps?.options?.map((opt) => (
+    <DmrFormCheck
+      key={`${field.fieldName}_${opt.value}`}
+      type="radio"
+      id={`${field.fieldName}_${opt.value}`}
+      label={opt.label}
+      value={opt.value}
+      {...register(field.fieldName, {
+        required: field.validation?.required
+          ? "This field is required."
+          : false
+      })}
+      invalid={!!errors[field.fieldName]}
+    />
+  ))}
+
+  
+Insert those fields into this React component. Your output will only be the react code.
+

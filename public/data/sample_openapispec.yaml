@@ -1,0 +1,378 @@
+openapi: 3.1.0
+info:
+  title: DMR Pacific API
+  version: 1.0.0
+  description: API for managing users and vehicles.
+
+servers:
+  - url: https://api.dmrpacific.com/v1
+    description: Production
+
+tags:
+  - name: Users
+    description: User management
+  - name: Vehicles
+    description: Vehicle registry
+
+paths:
+  /users:
+    get:
+      tags: [Users]
+      summary: List all users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    post:
+      tags: [Users]
+      summary: Create a new user
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+
+  /vehicles:
+    get:
+      tags: [Vehicles]
+      summary: List all vehicles
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of vehicles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicle'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+    post:
+      tags: [Vehicles]
+      summary: Register a new vehicle
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleCreateRequest'
+      responses:
+        '201':
+          description: Vehicle registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+
+  /login:
+    post:
+      summary: User login
+      description: Authenticates a user and returns an access token
+      operationId: loginUser
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginDTO'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: JWT or access token
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  refreshToken:
+                    type: string
+                    description: Refresh token to renew the access token
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorDTO'
+        '401':
+          description: Unauthorized – invalid credentials
+
+  /options-1:
+    get:
+      summary: Get options for select
+      description: Returns a list of selectable options for a dropdown.
+      responses:
+        '200':
+          description: Successful response with options
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                      description: The internal value for the option
+                    label:
+                      type: string
+                      description: The text displayed in the select
+              example:
+                - value: "option1"
+                  label: "Option 1"
+                - value: "option2"
+                  label: "Option 2"
+                - value: "option3"
+                  label: "Option 3"
+  /register:
+    post:
+      summary: Register a new account
+      description: Creates a new user account with the provided credentials and information
+      operationId: registerUser
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterDTO'
+      responses:
+        '201':
+          description: Account successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique ID of the newly created account
+                    example: 12345
+                  username:
+                    type: string
+                    description: The username of the newly registered account
+                    example: johndoe
+                  email:
+                    type: string
+                    format: email
+                    description: The email address of the account
+                    example: johndoe@example.com
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorDTO'
+
+
+          
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequestError:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: u123
+        name:
+          type: string
+          example: Jane Doe
+        email:
+          type: string
+          format: email
+          example: jane.doe@dmrpacific.com
+
+    CreateUserDto:
+      type: object
+      properties:
+        name: 
+          type: string
+        email:
+          type: string
+
+    Case:
+      type: object
+      properties:
+        id:
+          type: string
+          example: u123
+        name:
+          type: string
+          example: SNAP February Application
+        worker:
+          type: string
+          example: Jane doe
+        householdId:
+          type: integer
+          example: 124
+
+
+
+    UserCreateRequest:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: v001
+        make:
+          type: string
+          example: Toyota
+        model:
+          type: string
+          example: Corolla
+        year:
+          type: integer
+          example: 2020
+        ownerId:
+          type: string
+          example: u123
+
+    VehicleCreateRequest:
+      type: object
+      required: [make, model, year, ownerId]
+      properties:
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+        ownerId:
+          type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: Invalid input
+    LoginDTO:
+          type: object
+          required:
+            - username
+            - password
+          properties:
+            username:
+              type: string
+              example: johndoe
+              description: The username of the user
+            password:
+              type: string
+              format: password
+              example: mySecureP@ssw0rd
+              description: The user's password
+    ValidationErrorDTO:
+      type: object
+      properties:
+        violations:
+          type: array
+          description: List of field validation errors
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+                example: username
+                description: The field that caused the error
+              message:
+                type: string
+                example: Username is required
+                description: The validation error message
+    RegisterDTO:
+      type: object
+      required:
+        - username
+        - password
+        - email
+      properties:
+        username:
+          type: string
+          example: johndoe
+          description: The desired username for the account
+        password:
+          type: string
+          format: password
+          example: mySecureP@ssw0rd
+          description: The desired password for the account
+        email:
+          type: string
+          format: email
+          example: johndoe@example.com
+          description: The user's email address
+        firstName:
+          type: string
+          example: John
+          description: The user's first name
+        lastName:
+          type: string
+          example: Doe
+          description: The user's last name

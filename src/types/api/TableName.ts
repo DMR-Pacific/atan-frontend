@@ -1,0 +1,1 @@
+export type TableName = 'client_orders' | 'dmr_orders'

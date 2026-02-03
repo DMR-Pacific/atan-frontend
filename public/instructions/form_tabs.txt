@@ -1,0 +1,95 @@
+
+You will be provided with a list of tabs definitions(for example, from a YAML or JSON configuration) and a react component.
+
+This is the DmrTabs component tree:
+<DmrTabs>
+  <DmrTabsList>
+      <DmrTab>Tab 1</DmrTab>
+      <DmrTab>Tab 2</DmrTab>
+      <DmrTab>Tab 3</DmrTab>
+
+  </DmrTabsList>
+  <DmrPanels>
+      <DmrPanel index={0}>
+
+      </DmrPanel>
+      <DmrPanel index={1}>  
+
+      </DmrPanel>
+      <DmrPanel index={2}>  
+
+      </DmrPanel>
+  </DmrPanels>
+</DmrTabs>
+
+This automatically handles panel visibility when a tab is clicked
+
+Instructions: 
+1. Add this import statements:
+  import { DmrPanel, DmrPanels, DmrTab, DmrTabs, DmrTabsList } from '@/components/custom/DmrTabs'
+
+2. Search the react component for where the form is and insert the base of the DmrTabs component:
+    <DmrTabs>
+      <DmrTabsList>
+        {tabsArr.map((tab, idx) => (
+            <DmrTab key={tab.codeName} index={tab.codeName}>{tab.label}</DmrTab>
+        ))}
+      </DmrTabsList>
+      <DmrPanels>
+      </DmrPanels>
+    </DmrTabs>
+3. For each tab in the tabs array, insert a DmrPanel in the DmrPanels without using map like this:
+    <DmrPanel index={tab.codeName}><<leave panel empty>></DmrPanel>
+    <DmrPanel index={tab.codeName}><<Leave panel empty>></DmrPanel>
+
+4. Insert that tab group into the React component. 
+5. Write a tabsArr and insert it into the react component
+      const tabsArr = [
+            {
+              codeName: tab1.codeName,
+              label: "tab1.label",
+              fields: tab1.fields
+            
+            }, 
+        ]
+6. Insert this validationErrorHandler function into the react component without making any changes to it:
+
+    const validationErroHandler: SubmitErrorHandler<FormDto> = (errors) => {
+
+  
+      let temp = [...tabsArr]
+
+      for (const tab of temp) {
+        let erroredFields = []
+        for (const field of tab.fields) {
+
+          if (errors[field.fieldName]) {
+            erroredFields.push(field.label)
+          }
+        }
+
+        tab['errors'] = erroredFields
+      }
+      
+      const final = temp.filter(tab => (tab.errors.length > 0)).map((tab, i) => {
+        console.log(tab)
+        if (tab.errors.length > 0) {
+          return (
+            {
+              message: `${tab.errors.length} error(s) in ${tab.label} tab ` 
+            }
+          )
+        }
+    })
+      setErrorMessages(final)
+    }
+
+7. Update the handleSubmit of the form to include validationErrorHandler:
+    <form className=<<keep className>> onSubmit={handleSubmit(submitHandler, validationErroHandler)}>
+    
+8. Your output will only be the react code.
+9. Leave the content inside the panels blank
+  
+
+
+

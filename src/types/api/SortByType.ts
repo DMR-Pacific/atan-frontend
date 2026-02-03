@@ -1,0 +1,1 @@
+export type SortByType = 'createdAt' | 'dueDate' | 'value' | 'updatedAt' | 'estimatedArrival' | 'orderDate'

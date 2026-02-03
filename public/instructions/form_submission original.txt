@@ -1,0 +1,219 @@
+
+The submission object you will receive has the following structure:
+
+Top-Level Fields:
+    - path: The URL path to which the request is sent (e.g., /register).
+    - method: The HTTP method used for the request (e.g., POST).
+    - responseHandlers: This field is an array that contains one or more response handler objects. Each object represents how to process a specific status code and its corresponding behavior. Here's the structure of the response handler:
+        - statusCode: The HTTP status code for which this handler is responsible (e.g., 201 or 400).
+        - content: Describes the structure of the JSON response body for this status code.
+            - type: The type of response (e.g., object, array).
+            - properties: The properties of the response body, with details like type, description, and example values for each field.
+
+        - behavior: Defines the behavior type and the associated properties for this status code response.
+            - type: The behavior type (e.g., displayCard, displayListErrorsFromResponse).
+            - properties: A set of properties the template needs to define what to do in response to the status code. These properties may vary depending on the type.
+
+
+You are tasked with generating a React component that follows a given template. This component will submit a form and handle the responses from the server based on defined responseHandlers.
+
+Instructions
+1. Do not generate anything else other than asked.
+2. keep the form empty
+3. Read through the list of responseHandlers
+    1. Identify the successful responseHandler. A successful responseHandler is a responseHandler with a statusCode between 200-299. Check the behaviorType and code the following based on the behaviorType
+        a. Successful submission behavior. Write this behavior in the try block after the request is made
+            - redirect: simply redirect user to the url defined in responseHandler.navigateTo like this:
+                router.push(navigateTo) // from yaml
+            - displayCard: set a timer to automatically redirect to the default url
+                const timer = setTimeout(() => {
+                    router.push("/<<successfulResponseHandler.redirectUrl>>"); 
+                }, redirectTime)
+        b. Rendering the base of the form 
+            - redirect: return an empty form: 
+                <div className="bg-white shadow rounded-lg p-6">
+                {/* Error messages */}
+                <div className="flex flex-col gap-2 mb-4">
+                    {errorMessages.map((err, i) => (
+                    <div
+                        key={i}
+                        className="bg-red-100 border border-red-400 text-red-700 rounded-lg p-3"
+                    >
+                        {err.message}
+                    </div>
+                    ))}
+                </div>
+
+                {/* Form */}
+                <form className="flex flex-col gap-4">
+                    {/* Your form fields go here */}
+                </form>
+                </div>
+
+            - displayCard: toggle between the form and the submission successful card: 
+                <div>
+                {succeededSubmit ? (
+                    <div className="bg-white shadow rounded-lg p-6">
+                    <h1 className="text-xl font-semibold mb-2">
+                        {successfulResponseHandler.behavior.title}
+                    </h1>
+                    <p className="mb-4">{successfulResponseHandler.behavior.message}</p>
+                    <div className="flex justify-center items-center gap-4">
+                        <Link
+                        href="button1Url"
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                        >
+                        {successfulResponseHandler.button1Label}
+                        </Link>
+                        <Link
+                        href="button2Url"
+                        className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition"
+                        >
+                        {successfulResponseHandler.button2Label}
+                        </Link>
+                    </div>
+                    </div>
+                ) : (
+                    <div className="bg-white shadow rounded-lg p-6">
+                    {/* Error messages */}
+                    <div className="flex flex-col gap-2 mb-4">
+                        {errorMessages.map((err, i) => (
+                        <div
+                            key={i}
+                            className="bg-red-100 border border-red-400 text-red-700 rounded-lg p-3"
+                        >
+                            {err.message}
+                        </div>
+                        ))}
+                    </div>
+
+                    {/* Form */}
+                    <form className="flex flex-col gap-4">
+                        {/* Your form fields go here */}
+                    </form>
+                    </div>
+                )}
+                </div>
+
+    2. Identify the failed responseHandler(s), where responseHandler.statusCode is a number between 400-599
+4. For failed responseHandlers, write a comment on top like this: behaviorType: 'xBehaviorType'.
+
+5. Return me only the react code
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import axios from 'axios'
+import Link from 'next/link'
+
+export default function () {
+
+    // Fixed ----
+    const router = useRouter()
+    const { register, formState: { errors }, handleSubmit, watch, setValue, setError} = useForm<FormDto>()
+    const [errorMessages, setErrorMessages] = useState<{message: string}[]>([])
+    const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false)
+    const [succeededSubmit, setSucceededSubmit] = useState<boolean>(false)
+    // ---------- 
+
+    // write any useEffects here
+
+    const submitHandler: SubmitHandler<FormDto> = async (data) => {
+        setLoadingSubmit(true)
+
+
+        // First, handle the successfulResponseHandler
+        try {
+
+            // use the path and method fields to write a request
+            const response = await axios.method(http://submission.path) 
+
+            setSucceededSubmit(true)
+
+            // Follow step 3 in the instructions to write the action after a successful response
+            
+
+            } catch (err) {
+
+                
+                if (!axios.isAxiosError(err)) {
+                    setErrorMessages([{message: 'An unexpected error has occurred. Please try again later'}])
+
+                }
+
+                // For each failed responseHandlers, have an if statement for eachStatusCode
+                if (err.response.status == responseHandler.STATUS_CODE_1) {
+
+                    // Check responseHandler.behavior.type 
+                    
+
+                    // if responseHandler.behavior.type: fixed
+                    // Display a fixed message every single time
+                    setErrorMessages([{message: MESSAGE }]) // from responseHandler.behavior.properties.message
+                    // END-----
+
+                    // if responseHandler.behavior.type: forwardErrorResponse
+                    // Forward the message found in the response 
+                     // responseHandler.behavior.properties.errorMessageProperty identifies where in the response the error message is
+
+                    setErrorMessages([{message: response.data.errorMessageProperty}])
+                    // END-----
+
+
+                    // if responseHandler.behavior.type: displayCustomMessageWithVariable
+                    // Create a template literal with the value in responseHandler.behavior.properties.errorMessageWithVariable 
+                    setErrorMessages([{message: ``}]) 
+                    // END-----
+
+                    // if responseHandler.behavior.type: displayListErrorsFromResponse
+                    // Map all violations and push to errorMessages
+                    // errorListProperty identifies where in the response the violations array is
+                    const violations = err.response.data.errorListProperty 
+                    let tempGlobalMessages = []
+                    for (const violation in violations) {
+                        tempGlobalMessages.push({message: `[${violation.fieldName}]: ${violation.message}`})
+                    }
+                    setErrorMessages(tempGlobalMessages)
+                    // END-----
+
+
+                    // if responseHandler.behavior.type: mapErrorsFromResponse
+                    // If the violation's fieldName exists in the form, map it directly to the formErrors by using setError,
+                    // Otherwise, displayt it using errorMessages
+                    const violations = err.response.data.errorListProperty // errorListProperty identifies where in the response the violations array is
+                    let tempGlobalMessages = []
+                    for (const violation in violations) {
+                        // if violation fieldname exists in form, map the error so the error appears on the input field
+                        if (Object.keys(data).includes(violation.fieldName)) {
+                            setError(violation.fieldName, {type: "manual", message: violation.message})
+                        } else {
+                        // else, display the error at the top so users can still see it
+                            tempGlobalMessages.push({message: `[${violation.fieldName}]: ${violation.message}`})
+                        }
+                    }
+                    setErrorMessages(tempGlobalMessages)
+                    // END-----
+                
+                } else if (err.response.status == responseHandler.STATUS_CODE_2){
+
+
+                } else {
+                    // Catch-all for unexpected axios errors
+                    setErrorMessages([{message: 'An unexpected error has occurred. Please try again later'}])
+                }
+                
+
+
+            }
+    
+
+    }
+
+
+
+    return (
+        <div>
+
+        </div>
+    )

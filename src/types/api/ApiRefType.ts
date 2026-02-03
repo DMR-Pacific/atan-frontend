@@ -1,0 +1,1 @@
+export type ApiRefType = 'status' | 'priority' | 'category' | 'clientType'
