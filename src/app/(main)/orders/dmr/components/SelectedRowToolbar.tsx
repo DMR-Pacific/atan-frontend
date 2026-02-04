@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Info,
@@ -19,6 +19,7 @@ import { updateClientOrderRefColumnsByIdList } from '@/services/OrderService'
 import { toast } from 'sonner'
 import { doUnlinkClientOrderDmrOrder } from '@/utils/dmrOrders/doUnlinkClientOrderDmrOrder'
 import { useDmrOrdersTableContext } from '@/context/DmrOrdersTableContext'
+import { useOrdersContext } from '@/context/OrdersContext'
 interface SelectedRowToolbarProps {
 
 }
@@ -32,10 +33,12 @@ export function SelectedRowToolbar({
         doDeleteDmrOrderList,
         fetchDmrOrders,
         setSelectedDmrRows,
-        setSelectedClientRows
+        setSelectedClientRows,
+        
     } = useDmrOrdersTableContext()
     
-
+    const { setDeleteOrderModalOptions } = useOrdersContext()
+    const [loadDelete, setLoadDelete] = useState<boolean>(false)
     const onClose = () => {
         setSelectedClientRows([])
         setSelectedDmrRows([])
@@ -44,6 +47,7 @@ export function SelectedRowToolbar({
     }
 
     const handleDelete = () => {
+        setLoadDelete(true)
         if (selectedClientRows.length > 0 && selectedDmrRows.length > 0 ) {
             toast.error('Please do not select client and DMR orders together.')
         } else if (selectedClientRows.length > 0) {
@@ -53,6 +57,18 @@ export function SelectedRowToolbar({
         } else {
             toast.error('Please select a row to delete.')
         }
+
+
+        // hide modal upon deletion
+        setDeleteOrderModalOptions({
+            visible: false,
+            orderIdListDelete: [],
+            onSubmit: () => {},
+            tableName: "client_orders",
+            isDeleting: false,
+        })
+        setLoadDelete(false)
+
     }
     
 
@@ -112,11 +128,16 @@ export function SelectedRowToolbar({
                 {/* Center - Actions */}
                 <div className="flex items-center gap-6">
            
-       
 
                     <button 
                         className="flex flex-col items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors group"
-                        onClick={handleDelete}    
+                        onClick={() => {setDeleteOrderModalOptions({
+                            visible: true,
+                            onSubmit: handleDelete,
+                            tableName: selectedClientRows.length > 0 ? "client_orders" : "dmr_orders",
+                            orderIdListDelete: selectedClientRows.length > 0 ? selectedClientRows  : selectedDmrRows,
+                            isDeleting: loadDelete
+                        })}}    
                     >
                         <Trash2
                             size={20}

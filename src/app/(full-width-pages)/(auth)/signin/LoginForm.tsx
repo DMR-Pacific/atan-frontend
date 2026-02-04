@@ -28,7 +28,7 @@ export function LoginForm() {
 
     const methods = useForm<LoginDto>({
         defaultValues: {
-            usernameOrEmail: 'testuser01',
+            usernameOrEmail: '',
             password: 'g00d.Helf'
         }
     })
@@ -38,11 +38,8 @@ export function LoginForm() {
     const { register, watch, formState: { errors }, handleSubmit} = methods
     const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    const [formData, setFormData] = useState({
-        email: 'tet',
-        password: '',
-    })
 
+    const [error,setError] = useState<boolean>(false)
 
     const submitHandler: SubmitHandler<LoginDto> = async (data) => {
         const loginUrl = process.env.NEXT_PUBLIC_DMRPACIFIC_API_URL || ""
@@ -57,6 +54,7 @@ export function LoginForm() {
             
 
         } catch (err) {
+            setError(true)
             console.log(err)
         }
 
@@ -68,6 +66,10 @@ export function LoginForm() {
         <FormProvider {...methods} >
 
             <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
+                {error && 
+                <p className='text-red-800 px-4 py-2 bg-red-200 rounded-lg'>
+                    An unexpected error occured. Please try again later.  
+                </p>}
                 <div className="space-y-4">
                     <motion.div
                         initial={{
@@ -93,7 +95,8 @@ export function LoginForm() {
                             icon={<Mail className="h-4 w-4" />}
                             autoComplete="email"
                         /> */}
-                        <input 
+                        <input
+                            className='w-full my-2'
                             {...register("usernameOrEmail")}
                             placeholder='Username or email'
                         />
@@ -137,14 +140,17 @@ export function LoginForm() {
                             </button>
                             }
                         /> */}
-                        <input 
+                        <input
+                            className='w-full my-2'
+
                             {...register("password")}
                             placeholder='Password'
+                            type='password'
                         />
                     </motion.div>
                 </div>
 
-                <motion.div
+                {/* <motion.div
                     initial={{
                     opacity: 0,
                     y: 10,
@@ -173,7 +179,7 @@ export function LoginForm() {
                     >
                     Forgot password?
                     </a>
-                </motion.div>
+                </motion.div> */}
 
                 <motion.div
                     initial={{

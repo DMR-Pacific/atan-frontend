@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Info,
@@ -42,14 +42,14 @@ export function SelectedRowToolbar({
 
 }: SelectedRowToolbarProps) {
     const { groups, groupBy, doGetAllOrdersByGroup , selectedDmrRows, selectedClientRows,  setSelectedDmrRows, setSelectedClientRows, doDeleteClientOrderList, doDeleteDmrOrderList } = useClientOrdersTableContext()
-    
+    const { setDeleteOrderModalOptions } = useOrdersContext() 
     const onClose = () => {
-        console.log("CLICKED")
         setSelectedClientRows([])
         setSelectedDmrRows([])
-
         return 
     }
+
+    const [loadingDelete, setLoadingDelete] = useState<boolean>(false)
 
     const handleMoveClientOrdersToGroupId = async (groupId: number) => {
 
@@ -83,6 +83,14 @@ export function SelectedRowToolbar({
         } else {
             toast.error('Please select a row to delete.')
         }
+
+        setDeleteOrderModalOptions({
+            visible: false,
+            orderIdListDelete: [],
+            onSubmit: () => {},
+            tableName: "client_orders",
+            isDeleting: false,
+        })
     }
     
 
@@ -146,7 +154,13 @@ export function SelectedRowToolbar({
 
                     <button 
                         className="flex flex-col items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors group"
-                        onClick={handleDelete}    
+                        onClick={() => {setDeleteOrderModalOptions({
+                            visible: true,
+                            onSubmit: handleDelete,
+                            tableName: selectedClientRows.length > 0 ? "client_orders" : "dmr_orders",
+                            orderIdListDelete: selectedClientRows.length > 0 ? selectedClientRows  : selectedDmrRows,
+                            isDeleting: loadingDelete
+                        })}}     
                     >
                         <Trash2
                             size={20}

@@ -157,7 +157,7 @@ export default function HistoryDrawer ({
 
                         <div className="space-y-6">
                             {historyEntries.map((entry, index) => {
-
+                                console.log("ETNRY" ,entry)
                             return (
                                 <HistoryRow
                                     key={index}

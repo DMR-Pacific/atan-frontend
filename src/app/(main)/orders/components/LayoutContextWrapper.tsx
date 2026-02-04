@@ -9,6 +9,8 @@ import ErrorBanner from "@/components/errors/ErrorBanner"
 import { AnimatePresence } from "framer-motion"
 import { SelectedRowToolbar } from "./SelectedRowToolbar"
 import LinkClientOrderModal from "./ClientOrders/LinkClientOrderModal"
+import { OrderId } from "@/types/orders/order-types"
+import { WarnDeleteModal } from "./WarnDeleteModal"
 
 // This exists to simply wrap context around components meant to exist in the Orders layout
 
@@ -19,6 +21,9 @@ export default function LayoutContextWrapper () {
         setIsHistoryDrawerOpen,
         clientOrderModalOptions, handleUnshowClientOrderModal,
         dmrOrderModalOptions,handleUnshowDmrOrderModal,
+        deleteOrderModalOptions,  setDeleteOrderModalOptions,
+        masterClientOrders, masterDmrOrders,
+
     } = useOrdersContext()
 
     return (
@@ -43,9 +48,32 @@ export default function LayoutContextWrapper () {
                 isOpen={dmrOrderModalOptions.visible}
                 onClose={handleUnshowDmrOrderModal}
             />
-
+            
             <LinkClientOrderModal />
 
+            <WarnDeleteModal 
+                onClose={() => {
+                    setDeleteOrderModalOptions({
+                        visible: false,
+                        orderIdListDelete: [],
+                        onSubmit: () => {},
+                        tableName: "client_orders",
+                        isDeleting: false,
+                    })
+
+                }}
+                visible={deleteOrderModalOptions.visible}
+                orderIds={deleteOrderModalOptions.orderIdListDelete}
+                onSubmit={deleteOrderModalOptions.onSubmit}
+                getOrderDetails={(id: OrderId) => {
+                    if (deleteOrderModalOptions.tableName == "client_orders")
+                    return masterClientOrders[id]
+                    else if (deleteOrderModalOptions.tableName == "dmr_orders") 
+                    return masterDmrOrders[id]
+
+                }}
+                isDeleting={deleteOrderModalOptions.isDeleting}
+            />
         </div>
     )
 }

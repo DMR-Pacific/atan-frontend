@@ -41,6 +41,14 @@ export interface LinkModalOptions {
     onSubmit?: () => void
 }
 
+export interface DeleteOrderModalOptions {
+    visible: boolean,
+    orderIdListDelete: OrderId[]
+    tableName: TableName
+    isDeleting: boolean
+    onSubmit: () => void // delete handler after confirmation
+}
+
 export type OrderModalMode = 'add' | 'edit'| 'add-link' | 'view'
 
 interface OrdersContextType {
@@ -88,6 +96,9 @@ interface OrdersContextType {
 
     clientOrderModalOptions: OrderModalOptions
     setClientOrderModalOptions: React.Dispatch<React.SetStateAction<OrderModalOptions>>
+
+    deleteOrderModalOptions: DeleteOrderModalOptions
+    setDeleteOrderModalOptions: React.Dispatch<React.SetStateAction<DeleteOrderModalOptions>>
 
     handleShowDmrOrderModal: (mode: OrderModalMode, orderId?: number, linkToOrderId?: number, onSubmit?: () => void) => void
     handleUnshowDmrOrderModal: () => void
@@ -170,6 +181,14 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
     const [linkDmrModalOptions, setLinkDmrModalOptions] = useState<LinkModalOptions>({
         visible: false,
         linkToOrderId: undefined,
+
+    })
+    const [deleteOrderModalOptions, setDeleteOrderModalOptions] = useState<DeleteOrderModalOptions>({
+        visible: false,
+        orderIdListDelete: [],
+        onSubmit: () => {},
+        isDeleting: false,
+        tableName: "client_orders",
 
     })
 
@@ -541,6 +560,7 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
                 
                 clientOrderModalOptions, setClientOrderModalOptions,
                 dmrOrderModalOptions, setDmrOrderModalOptions,
+                deleteOrderModalOptions, setDeleteOrderModalOptions,
                 handleShowDmrOrderModal, handleUnshowDmrOrderModal,
                 handleShowClientOrderModal, handleUnshowClientOrderModal
             }}
