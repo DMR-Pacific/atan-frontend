@@ -51,7 +51,7 @@ export default function CollapsibleTable({
           }}
         >
 
-        <div className="mb-4 relative">
+        <div className="mb-4 relative overflow-x-auto">
             {/* Group Header */}
             <div
               className="flex items-center gap-2 py-2  cursor-pointer hover:bg-gray-50 rounded-md group select-none"
@@ -134,7 +134,7 @@ export default function CollapsibleTable({
                     :
                     <div 
                       style={{borderLeftColor: group?.color}}
-                      className={`border-l-8 rounded-lg`}
+                      className={`border-l-8 rounded-lg overflow-x-scroll `}
                       >
 
                       <ClientOrderHeader />

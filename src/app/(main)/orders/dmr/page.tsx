@@ -36,10 +36,11 @@ export default function DmrOrders () {
 
                 
                 {viewMode == 'rows' &&
-                <div>
+                <div className='overflow-x-scroll min-w-max'>
 
                     <DmrOrdersTableHeader />
                     <div>
+
                         {dmrOrderIds.map((dmrId) => (
                             <div key={`dmrRow-${dmrId}`}>
 

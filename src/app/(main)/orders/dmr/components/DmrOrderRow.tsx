@@ -27,6 +27,7 @@ import { ClientOrderRow } from "../../components/ClientOrders/ClientOrderRow";
 import { ClientOrderHeader } from "../../components/ClientOrders/ClientOrderHeader";
 import SubClientOrdersCollapsible from "./SubClientOrdersCollapsible";
 import { DmrOrderMaster } from "@/types/orders/DmrOrderMaster";
+import { DMR_ORDERS_HEADERS } from "../../components/DmrOrders/DmrOrdersSubTable";
 
 interface DmrOrderRowProps {
     dmrOrder: DmrOrderMaster
@@ -37,6 +38,9 @@ interface DmrOrderRowProps {
     checked: boolean
 
 }
+
+
+    
 
 const mapDmrOrderToForm =(dmrOrder: DmrOrderMaster): any => {
 
@@ -125,145 +129,149 @@ export default function DmrOrderRow ({
         }
     }
 
-        
-
+const HEADERS_COLUMN_SIZE_STR: string = DMR_ORDERS_HEADERS.reduce((acc, next) => {
+    if (!acc) return next.width || ""
+    return acc+"_"+next.width
+    }, "")
 
 
     return (
 
         <FormProvider {...methods} >
-            {/* Row */}
-            <div  className="grid grid-cols-[60px_250px_minmax(80px,120px)_140px_140px_150px_275px] gap-0 border-y border-gray-200 bg-white text-xs text-gray-500 font-medium shadow-sm">
-                {/* Checkbox */}
-                <div className="flex gap-2 justify-center items-center h-full border-r border-gray-100 bg-gray-50/30">
-                    <input
-                        checked={checked}
-                        onChange={() => handleOrderCheck(dmrOrder.id)}
-                        disabled={isSelectDisabled}
-                        type="checkbox"
-                        className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                    />
-                    {warnUnlink &&
-                    <button 
-                        onClick={() => warnUnlink(dmrOrder.id)}
-                        className='hover:text-red-600 transition-colors'
-                    >
-                        <Unlink size={16} />
 
-                    </button>}
-                </div>
-                <div className='group border-r border-gray-100 flex items-center gap-1 flex-1 truncate px-2'>
-                    {/* Expandable */}
-                    {expandable &&
-                    <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 rounded">
-                        {(dmrOrder.clientOrders && dmrOrder.clientOrders.length > 0) ?
-
-                        <Tooltip>
-                        <TooltipTrigger
-                            onClick={() => setIsExpanded(prev => !prev)}
+                {/* Row */}
+                <div  className={`grid grid-cols-[${HEADERS_COLUMN_SIZE_STR}] gap-0 border-y border-gray-200 bg-white text-xs text-gray-500 font-medium`}>
+                    {/* Checkbox */}
+                    <div className="flex gap-2 justify-center items-center h-full border-r border-gray-100 bg-gray-50/30">
+                        <input
+                            checked={checked}
+                            onChange={() => handleOrderCheck(dmrOrder.id)}
+                            disabled={isSelectDisabled}
+                            type="checkbox"
+                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        />
+                        {warnUnlink &&
+                        <button 
+                            onClick={() => warnUnlink(dmrOrder.id)}
+                            className='hover:text-red-600 transition-colors'
                         >
-                        
-                            <ChevronRight
-                                className={`transition duration-100 ${isExpanded ? 'rotate-90': 'rotate-0'}`}
-                            />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            View Client Orders
-                        </TooltipContent>
-                        </Tooltip>:
-                        <Tooltip>
-                        <TooltipTrigger
-                            onClick={() => setIsExpanded(prev => !prev)}              
-                        >
-                
-                            <ChevronRight
-                                className={`opacity-0 group-hover:opacity-40 transition duration-100 ${isExpanded ? 'rotate-90 opacity-100': 'rotate-0 opacity-0'}`}
-                            />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Add Client Orders
-                        </TooltipContent>
-                        </Tooltip>
+                            <Unlink size={16} />
 
-                        
-                        }
-                    </span>}
-                    <EditableTextCell
-                        id={dmrOrder.id}
-                        fieldName='label'
-                        handleUpdate={() => doUpdateDmrOrder(dmrOrder.id, watch())}
+                        </button>}
+                    </div>
+                    <div className='group border-r border-gray-100 flex items-center gap-1 flex-1 truncate px-2'>
+                        {/* Expandable */}
+                        {expandable &&
+                        <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 rounded">
+                            {(dmrOrder.clientOrders && dmrOrder.clientOrders.length > 0) ?
+
+                            <Tooltip>
+                            <TooltipTrigger
+                                onClick={() => setIsExpanded(prev => !prev)}
+                            >
+                            
+                                <ChevronRight
+                                    className={`transition duration-100 ${isExpanded ? 'rotate-90': 'rotate-0'}`}
+                                />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                View Client Orders
+                            </TooltipContent>
+                            </Tooltip>:
+                            <Tooltip>
+                            <TooltipTrigger
+                                onClick={() => setIsExpanded(prev => !prev)}              
+                            >
+                    
+                                <ChevronRight
+                                    className={`opacity-0 group-hover:opacity-40 transition duration-100 ${isExpanded ? 'rotate-90 opacity-100': 'rotate-0 opacity-0'}`}
+                                />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                Add Client Orders
+                            </TooltipContent>
+                            </Tooltip>
+
+                            
+                            }
+                        </span>}
+                        <EditableTextCell
+                            id={dmrOrder.id}
+                            fieldName='label'
+                            handleUpdate={() => doUpdateDmrOrder(dmrOrder.id, watch())}
+                        />
+                    </div>
+
+                    <div className="px-2 py-2 flex justify-center border-r border-gray-100 h-full items-center">
+
+                        <AssignedToCell 
+                            assignedToList={dmrOrder.assignedToList} 
+                            handleUnassign={(userIdToUnassign: number) => {
+                                doUnassignUserDmrOrder(userIdToUnassign, dmrOrder.id)
+                            }}
+                            handleAssign={(userIdToAssign: number) => {
+                                doAssignUserDmrOrder(userIdToAssign, dmrOrder.id)
+
+                            }}
+                        />
+                    
+                    </div>
+
+                    {/* Status */}
+                    <SelectCellWrapper>
+
+                        <HoverSelect
+                            id={dmrOrder.id}
+                            fieldName='statusId'
+                            fields={references.status}
+                            handleChangeSelect={createDmrOrderChangeRefHandler('statusId')}
+                        />
+                    </SelectCellWrapper>
+
+
+                    {/* Order Date */}
+                    <DateCell 
+                        fieldName="orderDate"
+                        handleChangeDate={createDmrOrderDateChangeHandler('orderDate')}
                     />
-                </div>
 
-                <div className="px-2 py-2 flex justify-center border-r border-gray-100 h-full items-center">
-
-                    <AssignedToCell 
-                        assignedToList={dmrOrder.assignedToList} 
-                        handleUnassign={(userIdToUnassign: number) => {
-                            doUnassignUserDmrOrder(userIdToUnassign, dmrOrder.id)
-                        }}
-                        handleAssign={(userIdToAssign: number) => {
-                            doAssignUserDmrOrder(userIdToAssign, dmrOrder.id)
-
-                        }}
+                    {/* Estimated arrival */}
+                    <DateCell 
+                        fieldName="estimatedArrival"
+                        handleChangeDate={createDmrOrderDateChangeHandler('estimatedArrival')}
                     />
-                
-                </div>
 
-                {/* Status */}
-                <SelectCellWrapper>
-
-                    <HoverSelect
-                        id={dmrOrder.id}
-                        fieldName='statusId'
-                        fields={references.status}
-                        handleChangeSelect={createDmrOrderChangeRefHandler('statusId')}
-                    />
-                </SelectCellWrapper>
-
-
-                {/* Order Date */}
-                <DateCell 
-                    fieldName="orderDate"
-                    handleChangeDate={createDmrOrderDateChangeHandler('orderDate')}
-                />
-
-                {/* Estimated arrival */}
-                <DateCell 
-                    fieldName="estimatedArrival"
-                    handleChangeDate={createDmrOrderDateChangeHandler('estimatedArrival')}
-                />
-
-                {/* notes  */}
-                <div
-                    className="group flex items-center"
-                >
-
-                    <EditableTextCell
-                        id={dmrOrder.id}
-                        fieldName='notes'
-                        handleUpdate={() => doUpdateDmrOrder(dmrOrder.id, watch())}
-                        rows={2}
-                    />
-                    <button
-                        type="button"
-                        onClick={() => openHistoryDrawer('dmr_orders','notes', dmrOrder.id )}
+                    {/* notes  */}
+                    <div
+                        className="group flex items-center"
                     >
-                        <History className="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
-                    </button>
+
+                        <EditableTextCell
+                            id={dmrOrder.id}
+                            fieldName='notes'
+                            handleUpdate={() => doUpdateDmrOrder(dmrOrder.id, watch())}
+                            rows={2}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => openHistoryDrawer('dmr_orders','notes', dmrOrder.id )}
+                        >
+                            <History className="text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" size={20} />
+                        </button>
+                    </div>
+
+
                 </div>
+                {/* Collapsible */}
+                {expandable &&
+                <div>
+                    {isExpanded && dmrOrder.clientOrders && (
+                    <SubClientOrdersCollapsible
+                        subOrderIds={dmrOrder.clientOrders}
+                        parentId={dmrOrder.id}
+                    />)}
+                </div>}
 
-
-            </div>
-            {/* Collapsible */}
-            {expandable &&
-            <div>
-                {isExpanded && dmrOrder.clientOrders && (
-                <SubClientOrdersCollapsible
-                    subOrderIds={dmrOrder.clientOrders}
-                    parentId={dmrOrder.id}
-                />)}
-            </div>}
         </FormProvider>
 
     )
