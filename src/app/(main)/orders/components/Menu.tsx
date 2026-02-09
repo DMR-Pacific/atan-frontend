@@ -123,7 +123,7 @@ export default function Menu () {
                 <button 
                   onClick={() => setIsGroupByOpen(prev => (!prev))}
                 
-                  className="flex items-center gap-2 bg-blue-200 px-3 py-1.5 rounded-md border border-blue-100 text-sm text-blue-700 font-medium cursor-pointer hover:bg-blue-50 transition-colors"
+                  className="flex items-center gap-2  px-3 py-1.5 rounded-md border border-blue-100 text-sm text-blue-700 font-medium cursor-pointer bg-blue-50  hover:bg-blue-200 transition-colors"
                 >
                   <LayoutGrid className="w-4 h-4" />
                   <span>Group by</span>

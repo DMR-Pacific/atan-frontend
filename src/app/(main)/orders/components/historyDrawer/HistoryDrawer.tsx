@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ApiRefType } from "@/types/api/ApiRefType"
-import { Clock, GripVertical, Plus, RotateCcw, Trash2, X } from "lucide-react"
+import { Check, ChevronDown, Clock, GripVertical, Plus, RotateCcw, Trash2, X } from "lucide-react"
 import { useOrdersContext } from "@/context/OrdersContext"
 import { createReference, deleteReference, swapReferenceOrder, updateReference } from "@/services/ReferenceService"
 import { RefUpdateDto } from "@/types/RefUpdateDto"
@@ -46,6 +46,7 @@ export default function HistoryDrawer ({
         masterClientOrders, masterDmrOrders
     } = useOrdersContext()
 
+    const [isMoreOpen, setIsMoreOpen] = useState<boolean>(false)
     const [historyEntries, setHistoryEntries] = useState([])
     
     const tabs: {
@@ -53,10 +54,48 @@ export default function HistoryDrawer ({
             label: string
         }[] = [
             {
-            id: 'notes',
-            label: 'Notes',
+                id: 'notes',
+                label: 'Notes',
             },
-            // {
+            {
+                id: 'label',
+                label: 'Label',
+            },
+            {
+                id: 'value',
+                label: 'Value',
+            },
+            { 
+                id: "status_id" ,
+                label: 'Status',
+
+            },
+            { 
+                id: "priority_id",
+                label: 'Priority',
+            },
+            { 
+                id: "category_id",
+                label: 'Category',
+
+            },
+            { 
+                id: "clientType_id",
+                label: "Client Type"
+            },
+            { 
+                id: "due_date",
+                label: "Due Date"
+            },
+            { 
+                id: "order_date",
+                label: "Order Date"
+            },
+            { 
+                id: "estimated_arrival",
+                label: "Estimated Arrival"
+            },
+            //},
             // id: 'assignedTo',
             // label: 'Assigned To',
             // },
@@ -129,18 +168,68 @@ export default function HistoryDrawer ({
                     </div>
 
                     {/* Tabs */}
-                    <div className="flex px-6 border-b border-gray-100">
-                    {tabs.map((tab) => (
-                        <button
-                        key={tab.id}
-                        onClick={() => setHistoryDrawerTab(tab.id)}
-                        className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${historyDrawerTab === tab.id ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
+                    <div className="flex px-6 border-b border-gray-100 ">
+                        {/* {tabs.map((tab) => (
+                            <button
+                            key={tab.id}
+                            onClick={() => setHistoryDrawerTab(tab.id)}
+                            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${historyDrawerTab === tab.id ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
+                            >
+                            {tab.label}
+                            </button>
+                        ))} */}
+                        <div
+                            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors text-gray-500`}
                         >
-                        {tab.label}
-                        </button>
-                    ))}
-                    </div>
+                            {tabs.find(tab => historyDrawerTab == tab.id)?.label}
+                        </div>
 
+                        {/* More Dropdown */}
+                        <div className="relative ml-auto">
+                            <button
+                            //   ref={moreButtonRef}
+                            onClick={() => setIsMoreOpen(!isMoreOpen)}
+                            className={`flex items-center gap-1.5 px-3 py-3 text-sm font-medium transition-colors text-gray-500 hover:text-gray-700`}
+                            >
+                                More
+                            <ChevronDown
+                                className={`w-4 h-4 transition-transform ${isMoreOpen ? 'rotate-180' : ''}`}
+                            />
+
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {isMoreOpen && (
+                            <div
+                                // ref={dropdownRef}
+                                className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                            >
+                                {tabs.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => {
+                                        setHistoryDrawerTab(tab.id)
+                                        setIsMoreOpen(false)
+                                    }}
+                                    className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                                >
+                                    <span
+                                    className={
+                                        historyDrawerTab === tab.id ? 'font-medium text-blue-600' : ''
+                                    }
+                                    >
+                                    {tab.label}
+                                    </span>
+                                    {historyDrawerTab === tab.id && (
+                                    <Check className="w-4 h-4 text-blue-600" />
+                                    )}
+                                </button>
+                                ))}
+                            </div>
+                            )}
+                        </div>
+
+                    </div>
 
 
                     {/* Timeline Content */}

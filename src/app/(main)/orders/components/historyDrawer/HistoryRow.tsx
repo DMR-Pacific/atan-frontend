@@ -6,7 +6,10 @@ import { Clock } from "lucide-react"
 export default function HistoryRow ({entry, index} : { entry: THistory, index: number}) {
     const isLast = index === history.length - 1
     const { historyDrawerTab} = useOrdersContext()
-    console.log(entry)
+    console.log("ENTRY", entry.operation)
+    
+
+    const deletedHistoryEntry = entry.oldVal && !entry.newVal
     return (        
 
       <div key={entry.id} className="relative pl-12">
@@ -43,13 +46,18 @@ export default function HistoryRow ({entry, index} : { entry: THistory, index: n
                 </div>
               </div>
             </div>
-
             {/* Content preview */}
+          {!deletedHistoryEntry ?
+
             <div className="mb-3">
                 <p className="text-sm text-gray-700 bg-gray-50 p-3 rounded border border-gray-100">
-                  {entry.newVal[historyDrawerTab]}
+                  
+                   {entry.newVal[historyDrawerTab]}
                 </p>
-            </div>
+            </div>:
+            <div className="px-4 py-2 bg-red-200 text-red-900 border border-red-900 rounded-lg">
+              Entity Deleted {entry.operation}
+            </div>}
 
 
 
