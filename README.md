@@ -1,3 +1,131 @@
+
+
+### Transferring to production (docker registry)
+
+#### Step 1 Build the application and docker image
+```
+docker build --build-arg BUILD_ENV=<<CHOOSE_DEV_OR_PROD>> -t atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>> .
+```
+Examples:
+```
+docker build --build-arg BUILD_ENV=dev -t atan-frontend:dev.2.17.26 .
+docker build --build-arg BUILD_ENV=prod -t atan-frontend:prod.2.17.26 .
+```
+
+#### Step 2 Tag the image
+```
+docker tag atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>> dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>>
+```
+
+Examples:
+```
+docker tag atan-frontend:dev.2.17.26 dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
+docker tag atan-frontend:prod.2.17.26 dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+
+```
+#### Step 3 Push image
+```
+docker push dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>>
+```
+
+Examples
+```
+docker push dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
+docker push dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+
+
+```
+
+#### Step 3 Pull image (from prod server)
+```
+docker pull dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>>
+```
+
+Examples
+```
+docker pull dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
+docker pull dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+
+
+```
+#### Step 4 Stop image (from prod server)
+docker stop atan-frontend # stop the old container
+docker rm atan-frontend # remove the old container
+
+
+#### Step 5 Start image (from prod server)
+Run image on host port 4000 since dmrpacific will be running on port 3000
+```
+docker run -d \
+  --name atan-frontend \
+  --network web \
+  dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>>
+```
+
+```
+# DEV
+docker run -d \
+  --name atan-frontend \
+  --network web \
+  dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
+
+
+# PROD
+docker run -d \
+  --name atan-frontend \
+  --network web \
+  dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+```
+### Extra Step - Restarting an older image if current does not work
+
+dadadadada
+
+
+### Transferring to production without a docker registry
+Build image locally
+
+```
+docker build -t atan-frontend .
+```
+
+save image as tar file for ftp
+
+```
+# docker save -o <PATH_TO_WHERE_YOU_WANT_IT>\atan-frontend.tar atan-frontend 
+
+docker save -o C:\Users\nelbo\Documents\DOCKER_TARZ\atan-frontend.tar atan-frontend 
+```
+
+FTP using FileZilla
+
+From production server as root change ownership of tar to dockeruser
+
+as root
+```
+chown dockeruser:dockeruser /home/noahe/atan-frontend.tar
+mv /home/noahe/atan-frontend.tar /tmp/
+```
+
+as dockeruser
+load it into local docker image registery
+```
+docker load -i /tmp/atan-frontend.tar
+```
+
+Run
+```
+docker run -d -p 4000:4000 atan-frontend
+```
+
+
+
+
+
+
+
+
+
+# Project Setup
 npm install --save-dev dotenv-cli
 
 

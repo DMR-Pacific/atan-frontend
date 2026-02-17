@@ -29,7 +29,7 @@ export function LoginForm() {
     const methods = useForm<LoginDto>({
         defaultValues: {
             usernameOrEmail: '',
-            password: 'g00d.Helf'
+            password: ''
         }
     })
     const router = useRouter()

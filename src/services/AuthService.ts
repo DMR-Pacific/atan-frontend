@@ -7,11 +7,11 @@ const AuthService = {
 
 
     signin: (loginDto: LoginDto) => {
-        return dmrpacific_api.post("/api/1.0/auth/signin", loginDto)
+        return dmrpacific_api.post("/1.0/auth/signin", loginDto)
     },
 
     register: (regDto: RegisterDto) => {
-        return dmrpacific_api.post("/api/1.0/register/apply", regDto)
+        return dmrpacific_api.post("/1.0/register/apply", regDto)
 
     },
 

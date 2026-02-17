@@ -33,7 +33,7 @@ export const RefreshTokenService = {
 
     sendRefreshRequestToServer: (tokenRefreshRequest: TokenRefreshRequest) => {
         
-        return dmrpacific_api.post("/api/1.0/auth/refreshtoken", tokenRefreshRequest)
+        return dmrpacific_api.post("/1.0/auth/refreshtoken", tokenRefreshRequest)
 
     }
 

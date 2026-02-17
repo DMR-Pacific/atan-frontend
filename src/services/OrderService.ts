@@ -5,7 +5,7 @@ import { SortByType } from "@/types/api/SortByType"
 import { SortDirection } from "@/app/(main)/orders/components/SortByDropdown"
 import { ClientOrderAddDto } from "@/types/orders/ClientOrderAddDto"
 
-const ordersBase = "/api/1.0/orders"
+const ordersBase = "/1.0/orders"
 
 
 export const searchClientOrders =  (searchOrderDto: {[key: string]: any}, sortBy: SortByType, sortDir: SortDirection) => {

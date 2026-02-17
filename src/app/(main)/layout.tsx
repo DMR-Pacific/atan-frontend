@@ -4,9 +4,9 @@ import { useSidebar } from "@/context/SidebarContext";
 import AppHeader from "@/layout/AppHeader";
 import AppSidebar from "@/layout/AppSidebar";
 import Backdrop from "@/layout/Backdrop";
-import React from "react";
+import React, { useEffect } from "react";
 import { Toaster } from "sonner";
-
+import { redirect } from "next/navigation";
 export default function AdminLayout({
   children,
 }: {
@@ -20,6 +20,10 @@ export default function AdminLayout({
     : isExpanded || isHovered
     ? "lg:ml-[290px]"
     : "lg:ml-[90px]";
+
+    useEffect(() => {
+      if (localStorage.getItem('accessToken') == '' || ( localStorage.getItem('expiration') && new Date(localStorage.getItem('expiration') as string) < new Date()) ) redirect('/signin')
+    }, [])
 
   return (
     <div className="min-h-screen xl:flex">

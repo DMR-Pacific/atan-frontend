@@ -158,7 +158,7 @@ export default function SignIn() {
 
           {/* Footer Section */}
           <div className="px-8 py-4 bg-slate-50 border-t border-slate-100 text-center">
-            <p className="text-xs text-slate-500">
+            {/* <p className="text-xs text-slate-500">
               Don't have an account?{' '}
               <a
                 href="#"
@@ -166,7 +166,7 @@ export default function SignIn() {
               >
                 Request access
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
 

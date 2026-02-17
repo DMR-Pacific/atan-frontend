@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   //   ignoreBuildErrors: true,
   // },
   basePath: '/atan',
+  assetPrefix: "/atan",
+
   /**
    * 
    * This change creates a .next/standalone directory during the build process, 

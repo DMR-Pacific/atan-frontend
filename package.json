@@ -5,6 +5,8 @@
   "scripts": {
     "local": "dotenv -e .env.local next dev",
     "dev": "dotenv -e .env.development next dev",
+    "prod": "dotenv -e .env.production next dev",
+
     "build:dev": "dotenv -e .env.development next build",
     "build:prod": "dotenv -e .env.production next build",
     "clean:dev": "rimraf build/dev",

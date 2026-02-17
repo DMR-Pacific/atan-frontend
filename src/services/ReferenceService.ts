@@ -2,7 +2,7 @@ import { atlas_api, atlas_api_authorized } from "@/axios/Axios"
 import { ApiRefType } from "@/types/api/ApiRefType"
 import { RefUpdateDto } from "@/types/RefUpdateDto"
 
-const referencesBase = "/api/1.0/references"
+const referencesBase = "/1.0/references"
 
 export const getReference = (refType: ApiRefType) => {
     return atlas_api_authorized.get(`${referencesBase}/${refType}`)

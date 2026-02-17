@@ -61,6 +61,7 @@ export default function DmrOrderModal ({
 
     const {assignableUsers, references} = useOrdersContext()
     const submitHandler: SubmitHandler<DmrOrderUpdateDto> = async (data) => {
+        console.log("DMR UPDATE" , data)
         if (mode == 'add' || mode == 'add-link') {
             await doAddDmrOrder((data))
         } else if (mode == 'edit') {
