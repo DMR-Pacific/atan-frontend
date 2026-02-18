@@ -1,6 +1,5 @@
 'use client'
 
-import SignInForm from "@/components/auth/SignInForm";
 import { Metadata } from "next";
   import React from 'react'
 import { motion } from 'framer-motion'
@@ -16,9 +15,9 @@ import { LoginForm } from "./LoginForm";
 export default function SignIn() {
 
   return (
-    <div className="min-h-screen w-full bg-slate-50 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen w-full bg-slate-50 dark:bg-gray-900 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Pattern - Topographic Lines */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none ">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern
@@ -61,7 +60,7 @@ export default function SignIn() {
           duration: 1.5,
           ease: 'easeOut',
         }}
-        className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none"
+        className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-100  rounded-full blur-3xl opacity-50 pointer-events-none"
       />
       <motion.div
         initial={{
@@ -96,9 +95,9 @@ export default function SignIn() {
         className="w-full max-w-md relative z-10"
       >
         {/* Card Container */}
-        <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 overflow-hidden">
+        <div className="bg-white/80 dark:bg-gray-900 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 overflow-hidden">
           {/* Header Section */}
-          <div className="px-8 pt-8 pb-6 text-center border-b border-slate-100/50">
+          <div className="px-8 pt-8 pb-6 text-center border-b border-slate-100/50 dark:border-gray-700">
             <motion.div
               initial={{
                 scale: 0.5,
@@ -130,7 +129,7 @@ export default function SignIn() {
               transition={{
                 delay: 0.3,
               }}
-              className="text-2xl font-serif font-bold text-slate-900 mb-2 tracking-tight"
+              className="text-2xl dark:text-gray-200 font-serif font-bold text-slate-900 mb-2 tracking-tight"
             >
               Welcome to Atan
             </motion.h1>
@@ -152,12 +151,12 @@ export default function SignIn() {
           </div>
 
           {/* Form Section */}
-          <div className="p-8 bg-white/50">
+          <div className="p-8 ">
             <LoginForm />
           </div>
 
           {/* Footer Section */}
-          <div className="px-8 py-4 bg-slate-50 border-t border-slate-100 text-center">
+          <div className="px-8 py-4 bg-slate-50 dark:bg-gray-900 border-t border-slate-100 dark:border-gray-700 text-center">
             {/* <p className="text-xs text-slate-500">
               Don't have an account?{' '}
               <a
@@ -183,7 +182,7 @@ export default function SignIn() {
           }}
           className="mt-8 text-center"
         >
-          <p className="text-xs text-slate-400 font-medium tracking-widest uppercase">
+          <p className="text-xs text-slate-400 dark:text-gray-200 font-medium tracking-widest uppercase">
             Designed by dmrpacific
           </p>
         </motion.div>

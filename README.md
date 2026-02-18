@@ -9,7 +9,7 @@ docker build --build-arg BUILD_ENV=<<CHOOSE_DEV_OR_PROD>> -t atan-frontend:<<CHO
 Examples:
 ```
 docker build --build-arg BUILD_ENV=dev -t atan-frontend:dev.2.17.26 .
-docker build --build-arg BUILD_ENV=prod -t atan-frontend:prod.2.17.26 .
+docker build --build-arg BUILD_ENV=prod -t atan-frontend:prod.2.18.26 .
 ```
 
 #### Step 2 Tag the image
@@ -20,7 +20,7 @@ docker tag atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>>.<<DAY>>.<<YEAR>> dockr
 Examples:
 ```
 docker tag atan-frontend:dev.2.17.26 dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
-docker tag atan-frontend:prod.2.17.26 dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+docker tag atan-frontend:prod.2.18.26 dockreg.dmrpacific.com/atan-frontend:prod.2.18.26
 
 ```
 #### Step 3 Push image
@@ -31,7 +31,7 @@ docker push dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>
 Examples
 ```
 docker push dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
-docker push dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+docker push dockreg.dmrpacific.com/atan-frontend:prod.2.18.26
 
 
 ```
@@ -44,7 +44,7 @@ docker pull dockreg.dmrpacific.com/atan-frontend:<<CHOOSE_DEV_OR_PROD>>.<<MONTH>
 Examples
 ```
 docker pull dockreg.dmrpacific.com/atan-frontend:dev.2.17.26
-docker pull dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+docker pull dockreg.dmrpacific.com/atan-frontend:prod.2.18.26
 
 
 ```
@@ -74,7 +74,7 @@ docker run -d \
 docker run -d \
   --name atan-frontend \
   --network web \
-  dockreg.dmrpacific.com/atan-frontend:prod.2.17.26
+  dockreg.dmrpacific.com/atan-frontend:prod.2.18.26
 ```
 ### Extra Step - Restarting an older image if current does not work
 

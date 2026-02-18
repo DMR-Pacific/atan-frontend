@@ -54,12 +54,12 @@ export default function CollapsibleTable({
         <div className="mb-4 relative overflow-x-auto">
             {/* Group Header */}
             <div
-              className="flex items-center gap-2 py-2  cursor-pointer hover:bg-gray-50 rounded-md group select-none"
+              className="flex items-center gap-2 py-2  cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 mb-2 rounded-md group select-none"
               onClick={() => setIsExpanded(!isExpanded)}
             >
               <div 
                 style={{color: group?.color}}
-                className={`p-1 rounded hover:bg-gray-200 transition-colors`}
+                className={`p-1 rounded transition-colors`}
               >
                 {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
               </div>
@@ -109,11 +109,11 @@ export default function CollapsibleTable({
                     ease: 'easeInOut',
                   }}
 
-                  className=" border border-gray-200 rounded-lg shadow-sm bg-white "
+                  className=" border border-gray-200 rounded-lg shadow-sm bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200"
                 >
                   {ordersLoading[groupId] ?
 
-                    <div className="flex flex-col items-center justify-center py-24 px-4 text-center bg-white">
+                    <div className="flex flex-col items-center justify-center py-24 px-4 text-center ">
                       <div className={`w-${10} h-${10} border-4 border-blue-500 border-t-transparent rounded-full animate-spin`} />
                       Loading
                     </div>
@@ -121,14 +121,14 @@ export default function CollapsibleTable({
                   <div>
 
                     {fetchError ?
-                    <div className="flex flex-col items-center justify-center py-24 text-center bg-white">
+                    <div className="flex flex-col items-center justify-center py-24 text-center ">
                       <div className="bg-red-50 p-4 rounded-full mb-4">
                         <AlertCircle className="w-8 h-8 text-red-500" />
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-200">
                         Unable to fetch orders
                       </h3>
-                      <p className="text-gray-500 max-w-sm mb-6">{"Please try again later."}</p>
+                      <p className="text-gray-500 max-w-sm mb-6 dark:text-gray-400">{"Please try again later."}</p>
                     </div>
                     
                     :
@@ -164,7 +164,7 @@ export default function CollapsibleTable({
               ):
               <div
                 style={{borderLeftColor: group?.color}}
-                className={` border-l-8 border-l-${group?.color} border rounded-lg bg-white p-0 overflow-hidden flex items-center h-14 shadow-sm`}
+                className={` border-l-8 border-l-${group?.color} border rounded-lg  p-0 overflow-hidden flex items-center h-14 shadow-sm`}
               
               >
 
@@ -173,17 +173,17 @@ export default function CollapsibleTable({
                   <div></div>
 
                   {/* label */}
-                  <div className="px-4 text-sm text-gray-500 border-r border-gray-300">
+                  <div className="px-4 text-sm text-gray-500 border-r border-gray-300 dark:border-gray-700">
                     {orderGroup?.length}  Client po's
                   </div>
 
                   {/* Owner */}
-                  <div className=' border-r border-gray-300 '>
+                  <div className=' border-r border-gray-300 dark:border-gray-700 '>
                     <span className='invisible'>.</span>
                   </div> 
 
                   {/* Status Bar */}
-                  <div className="px-2 border-r border-gray-300">
+                  <div className="px-2 border-r border-gray-300 dark:border-gray-700">
                     <div className="flex h-6 w-full rounded overflow-hidden">
                       {Object.entries(summary?.statusDistribution || {}).map(([id, item], i) => {
                         return (
@@ -200,7 +200,7 @@ export default function CollapsibleTable({
                   </div>
 
                   {/* Due date */}
-                  <div className="px-2 flex justify-center border-r border-gray-300">
+                  <div className="px-2 flex justify-center border-r border-gray-300 dark:border-gray-700">
                     <span className='invisible'>.</span>
 
                     {/* {group.summary?.dateRange && (
@@ -211,7 +211,7 @@ export default function CollapsibleTable({
                   </div>
 
                   {/* Priority Bar */}
-                  <div className="px-2 border-r border-gray-300">
+                  <div className="px-2 border-r border-gray-300 dark:border-gray-700">
                     <div className="flex h-6 w-full rounded overflow-hidden gap-0.5">
                       {/* {group.summary?.priorityDistribution?.map((item, i) => (
                         <div
@@ -239,22 +239,22 @@ export default function CollapsibleTable({
                   </div>
 
               {/* Notes */}
-                  <div className="col-span-1 border-r border-gray-300">
+                  <div className="col-span-1 border-r border-gray-300 dark:border-gray-700">
                     <span className='invisible'>.</span>
                     
                   </div> 
       
                   {/* last updated */}
-                  <div className="col-span-1 border-r border-gray-300">
+                  <div className="col-span-1 border-r border-gray-300 dark:border-gray-700">
                     <span className='invisible'>.</span>
                     
                   </div> 
                   {/* Value */}
-                  <div className="px-4 flex flex-col items-end justify-center border-r border-gray-300">
-                    <span className="text-sm font-medium text-gray-900">
+                  <div className="px-4 flex flex-col items-end justify-center border-r border-gray-300 dark:border-gray-700">
+                    <span className="text-sm font-medium text-gray-900 dark:text-gray-200">
                       ${summary?.totalValue?.toLocaleString()}
                     </span>
-                    <span className="text-[10px] text-gray-400">sum</span>
+                    <span className="text-[10px] text-gray-400 ">sum</span>
                   </div>
 
                   {/* Client type */}

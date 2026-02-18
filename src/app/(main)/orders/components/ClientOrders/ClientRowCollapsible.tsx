@@ -116,8 +116,8 @@ export default function ClientRowCollapsible () {
             />}
             <AddDmrOrdersMenu />
 
-            <div className='bg-gray-50/50 group grid grid-cols-[40px_1fr] border-b-3 border-gray-200 '>
-                <div className="w-10 flex-shrink-0 border-r border-gray-100 relative">
+            <div className='bg-gray-50/50 group grid grid-cols-[40px_1fr] border-b-3 border-gray-200 dark:bg-gray-600 dark:border-gray-700'>
+                <div className="w-10 flex-shrink-0 border-r border-gray-100 relative dark:border-gray-700">
                     <div 
                         style={{backgroundColor: group?.color}}
                         className="h-full absolute top-0 bottom-4 left-1/2 w-[2px] bg-gray-200 opacity-30 -translate-x-1/2 rounded-b-full"
@@ -125,10 +125,10 @@ export default function ClientRowCollapsible () {
                 </div>
 
                 <div className='p-4'>
-                    <div className='border rounded  border-gray-200 '>
+                    <div className='border rounded  border-gray-200 dark:border-gray-700 '>
 
                         {/* Subheader */}
-                        <div className=" bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between gap-4">
+                        <div className=" bg-gray-100 px-4 py-2 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-700 flex items-center justify-between gap-4">
                                 <div className='flex items-center gap-4'>
                                     <ToggleView
                                         viewMode={viewMode}
@@ -162,7 +162,7 @@ export default function ClientRowCollapsible () {
                         <DmrOrdersSubTable />}
 
                         {viewMode == 'cards' &&
-                        <div className="p-4 bg-white">
+                        <div className="p-4 bg-white dark:bg-gray-900 dark:border-gray-700">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {subDmrOrderIds.map((orderId) => (
                                 <DmrOrderCard

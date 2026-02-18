@@ -55,11 +55,11 @@ export function ClientOrderHeader() {
     },
   ]
   return (
-    <div className="grid grid-cols-[40px_minmax(250px,2fr)_minmax(80px,120px)_140px_150px_100px_minmax(200px,3fr)_100px_120px_100px] gap-0 border-y border-gray-200 bg-white text-xs text-gray-500 font-medium sticky top-0 z-10 shadow-sm">
+    <div className="grid grid-cols-[40px_minmax(250px,2fr)_minmax(80px,120px)_140px_150px_100px_minmax(200px,3fr)_100px_120px_100px] gap-0 border-y border-gray-200 text-xs text-gray-500 font-medium sticky top-0 z-10 shadow-sm  dark:border-gray-700 dark:text-gray-500">
       {headers.map((header, index) => (
         <div
           key={`header-${index}`}
-          className={`px-2 py-2 h-8 flex items-center border-r border-gray-100 last:border-r-0 ${header.align === 'center' ? 'justify-center' : ''}`}
+          className={`px-2 py-2 h-8 flex items-center border-r border-gray-100 dark:border-gray-700 last:border-r-0 ${header.align === 'center' ? 'justify-center' : ''}`}
         >
           <span className="truncate">{header.label}</span>
           {/* {header.info && <Info size={12} className="ml-1 text-gray-300" />} */}

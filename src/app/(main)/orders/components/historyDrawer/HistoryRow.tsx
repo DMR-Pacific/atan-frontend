@@ -22,14 +22,14 @@ export default function HistoryRow ({entry, index} : { entry: THistory, index: n
 
         {/* Entry card */}
         <div
-          className={`bg-white border rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${index === 0 ? 'ring-2 ring-blue-100' : ''}`}
+          className={`bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 border rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ${index === 0 ? 'ring-2 ring-blue-100' : ''}`}
         >
           <div className="p-4">
             {/* Header */}
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-400">
                     {entry.updatedByUsername}
                   </span>
                 </div>
@@ -50,7 +50,7 @@ export default function HistoryRow ({entry, index} : { entry: THistory, index: n
           {!deletedHistoryEntry ?
 
             <div className="mb-3">
-                <p className="text-sm text-gray-700 bg-gray-50 p-3 rounded border border-gray-100">
+                <p className="text-sm text-gray-700  bg-gray-50  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 p-3 rounded border border-gray-100">
                   
                    {entry.newVal[historyDrawerTab]}
                 </p>

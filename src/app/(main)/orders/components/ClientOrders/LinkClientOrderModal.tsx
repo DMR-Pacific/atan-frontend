@@ -104,18 +104,18 @@ export default function LinkClientOrderModal ( ) {
               transition={{
                 duration: 0.2,
               }}
-              className="fixed inset-4 md:inset-8 lg:inset-16 bg-white rounded-xl shadow-2xl z-50 flex flex-col overflow-hidden"
+              className="fixed inset-4 md:inset-8 lg:inset-16 border bg-white dark:bg-gray-900 dark:border-gray-700 rounded-xl shadow-2xl z-50 flex flex-col overflow-hidden"
 
 
             >
               
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-700">
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-800">
+                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     All Client Orders
                   </h2>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-gray-500 mt-0.5 dark:text-gray-400">
                     Select a client order to add to DMR order
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function LinkClientOrderModal ( ) {
               </div>
 
               {/* Search Bar */}
-              <div className="px-6 py-4 border-b border-gray-200">
+              <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -145,7 +145,7 @@ export default function LinkClientOrderModal ( ) {
               {/* Subitems List */}
               <div className="flex-1 overflow-y-auto">
                 {allClientOrderIds.length > 0 ? (
-                  <div className="divide-y divide-gray-100">
+                  <div className="border border-b border-1 dark:border-gray-700">
 
                     {allClientOrderIds.filter(orderId => {
                         if (!linkToOrderId || !masterDmrOrders[linkToOrderId]) return
@@ -158,13 +158,13 @@ export default function LinkClientOrderModal ( ) {
                         return (
                         <div
                             key={`${order.id}-${idx}`}
-                            className="px-6 py-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                            className="px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer border "
                             onClick={() => handleLink(order.id)}
                         >
                             <div className="flex items-start justify-between gap-4">
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                <h3 className="text-sm font-semibold text-gray-800">
+                                <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     {order.label}
                                 </h3>
                                 <span
@@ -181,7 +181,7 @@ export default function LinkClientOrderModal ( ) {
                                 </div>
               
                                 {order.notes && (
-                                <p className="text-xs text-gray-600 line-clamp-2">
+                                <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-400">
                                     {order.notes}
                                 </p>
                                 )}

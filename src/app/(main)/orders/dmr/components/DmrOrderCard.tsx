@@ -25,14 +25,14 @@ export default function DmrOrderCard ({
     const {handleShowDmrOrderModal} = useOrdersContext()
     return (
         <div
-            className="cursor-pointer bg-white border border-gray-200 rounded-lg p-3 hover:border-blue-300 hover:shadow-sm transition-all group"
+            className="cursor-pointer border border-gray-200 dark:border-gray-700 rounded-lg p-3 hover:border-blue-300 hover:shadow-sm transition-all group"
             onClick={() => handleShowDmrOrderModal('view', order.id)}
         >
             <div
                 className="flex items-start flex-col gap-3"
             >
-                <div className="pt-0.5 border-b border-gray-200 pb-2 w-full">
-                    <div className="flex gap-2 justify-between items-center h-full border-r border-gray-100 bg-gray-50/30">
+                <div className="pt-0.5 border-b border-gray-200 pb-4 dark:border-gray-700 w-full">
+                    <div className="flex gap-2 justify-between items-center h-full border-r border-gray-100">
                         <div className="gap-2 flex">
                             <input
                                 onChange={(e) => {
@@ -66,7 +66,7 @@ export default function DmrOrderCard ({
                 </div>
                 <div className="flex-1 min-w-0 w-full">
                     <div className="flex items-start justify-between gap-2 mb-2">
-                    <h4 className="font-medium text-sm text-gray-900 line-clamp-2">
+                    <h4 className="font-medium text-sm text-gray-900 dark:text-gray-200 line-clamp-2">
                         {order.label}
                     </h4>
                     {/* <GripVertical className="w-3.5 h-3.5 text-gray-300 cursor-move flex-shrink-0" /> */}
@@ -118,7 +118,7 @@ export default function DmrOrderCard ({
                     </div>
 
                     {order.notes && (
-                    <p className="text-xs text-gray-600 bg-gray-50 p-2 rounded border border-gray-100 line-clamp-4">
+                    <p className="text-xs text-gray-600 bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700 p-2 rounded border border-gray-100 line-clamp-4">
                         {order.notes}
                     </p>
                     )}

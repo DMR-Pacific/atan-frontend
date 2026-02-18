@@ -1,15 +1,14 @@
 "use client";
-import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
-import NotificationDropdown from "@/components/header/NotificationDropdown";
-import UserDropdown from "@/components/header/UserDropdown";
+
 import { useSidebar } from "@/context/SidebarContext";
-import Image from "next/image";
-import Link from "next/link";
+import { useTheme } from "@/context/ThemeContext";
+import { Moon, Sun } from "lucide-react";
+
 import React, { useState ,useEffect,useRef} from "react";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
-
+  const {toggleTheme, theme } = useTheme()
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
 
   const handleToggle = () => {
@@ -40,6 +39,7 @@ const AppHeader: React.FC = () => {
     };
   }, []);
 
+  const isDarkMode = theme =='dark'
   return (
     <header className="sticky top-0 flex w-full bg-white border-gray-200 z-25 dark:border-gray-800 dark:bg-gray-900 lg:border-b">
       <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
@@ -151,7 +151,21 @@ const AppHeader: React.FC = () => {
           </div>
           <UserDropdown /> 
     
+          
         </div> */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              title={
+                theme == 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+              }
+            >
+              {isDarkMode ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
       </div>
     </header>
   );

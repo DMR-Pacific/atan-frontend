@@ -40,7 +40,7 @@ const DeleteErrorModal = ({
         opacity: 0,
         y: 10,
       }}
-      className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-red-100"
+      className="bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 rounded-xl shadow-2xl max-w-md w-full overflow-hidden border border-red-100"
     >
       <div className="p-6">
         <div className="flex items-start gap-4">

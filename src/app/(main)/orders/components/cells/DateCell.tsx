@@ -45,7 +45,7 @@ export default function DateCell ({fieldName, handleChangeDate} : DateCellProps)
     return (
         <div 
             ref={dropdownRef}
-            className="relative px-4 py-2 cursor-pointer border-r border-gray-100 h-full flex items-center text-xs text-gray-500"
+            className="relative px-4 py-2 cursor-pointer border-r border-gray-100  dark:border-gray-700 h-full flex items-center text-xs text-gray-500"
             onClick={(e) => setIsMenuOpen(prev => !prev)}
         >
           {fieldValue && (
@@ -76,7 +76,7 @@ export default function DateCell ({fieldName, handleChangeDate} : DateCellProps)
                     transition={{
                     duration: 0.15,
                     }}
-                    className="absolute top-full left-1/2 mt-1  bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50 transform -translate-x-1/2 flex items-center justify-center"
+                    className="absolute top-full left-1/2 mt-1  bg-white rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden z-50 transform -translate-x-1/2 flex items-center justify-center dark:bg-gray-900 dark:border-gray-700"
                     onClick={(e) => e.stopPropagation()}
                 >
                     

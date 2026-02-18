@@ -24,7 +24,7 @@ export default function ColorPicker({
 }: ColorPickerProps) {
   return (
 
-    <div className="absolute z-50 mt-2 p-3 bg-white rounded-lg shadow-xl border border-gray-200 w-48">
+    <div className="absolute z-50 mt-2 p-3 bg-white  border dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 rounded-lg shadow-xl border border-gray-200 w-48">
       <div className="grid grid-cols-4 gap-2">
         {COLORS.map((color) => (
           <button

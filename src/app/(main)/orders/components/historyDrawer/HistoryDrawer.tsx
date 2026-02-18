@@ -145,12 +145,12 @@ export default function HistoryDrawer ({
                 />
 
                 {/* Drawer */}
-                <div className="fixed inset-y-0 right-0 w-[400px] bg-white shadow-2xl z-100 flex flex-col transform transition-transform duration-300 ease-in-out animate-in slide-in-from-right">
+                <div className="fixed inset-y-0 right-0 w-[400px] bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 shadow-2xl z-100 flex flex-col transform transition-transform duration-300 ease-in-out animate-in slide-in-from-right">
             
                     {/* Header */}
-                    <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700 dark:text-gray-200">
                         <div>
-                            <h2 className="text-lg font-semibold text-gray-900">History</h2>
+                            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200">History</h2>
                             {(idForHistory) &&
                             <p className="text-sm text-gray-500 mt01">
                                 {(historyTableName == "client_orders" && masterClientOrders[idForHistory]) && masterClientOrders[idForHistory].label}
@@ -161,14 +161,14 @@ export default function HistoryDrawer ({
 
                         <button
                             onClick={onClose}
-                            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full transition-colors"
                         >
                             <X className="w-5 h-5" />
                         </button>
                     </div>
 
                     {/* Tabs */}
-                    <div className="flex px-6 border-b border-gray-100 ">
+                    <div className="flex px-6 border-b border-gray-100 dark:border-gray-700">
                         {/* {tabs.map((tab) => (
                             <button
                             key={tab.id}
@@ -235,7 +235,7 @@ export default function HistoryDrawer ({
                     {/* Timeline Content */}
                     <div className="flex-1 overflow-y-auto p-6">
                     {historyEntries.length === 0 ? (
-                        <div className="flex flex-col items-center justify-center h-64 text-gray-400">
+                        <div className="flex flex-col items-center justify-center h-64 text-gray-400 dark:text-gray-200">
                         <Clock className="w-12 h-12 mb-3" />
                         <p className="text-sm">No history yet</p>
                         </div>

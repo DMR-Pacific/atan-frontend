@@ -6,7 +6,7 @@ interface ToggleViewProps {
 }
 export default function ToggleView ({viewMode, onToggle} : ToggleViewProps) {
     return (
-        <div className="flex items-center gap-1 bg-white rounded-md border border-gray-200 p-0.5">
+        <div className="flex items-center gap-1 bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 rounded-md border border-gray-200 p-0.5">
 
             <button
                 type='button'

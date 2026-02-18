@@ -72,6 +72,7 @@ export default function HoverSelect ({ id, fieldName, fields, handleChangeSelect
             <div
             className={`absolute top-0 right-0 w-0 h-0 border-t-[14px] border-t-white border-l-[14px] border-l-transparent
                 transition-opacity duration-200
+                 dark:border-gray-700
                 ${editing ? "opacity-100" : "opacity-0"}
             `}
             />
@@ -101,7 +102,7 @@ export default function HoverSelect ({ id, fieldName, fields, handleChangeSelect
             transition={{
               duration: 0.15,
             }}
-            className="absolute top-full left-1/2 mt-1 w-48 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-200 p-6  transform -translate-x-1/2"
+            className="absolute top-full left-1/2 mt-1 w-48 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-200 p-6  transform -translate-x-1/2 dark:bg-gray-900 dark:border-gray-700"
           >
             <div
                 className='flex flex-col gap-2'
@@ -126,6 +127,7 @@ export default function HoverSelect ({ id, fieldName, fields, handleChangeSelect
                         px-4 py-2.5 text-white text-sm font-medium text-left transition-colors
                         rounded
                         hover:brightness-90 transition
+                        dark:text-gray-200
                     `}
                 >
                     {option.label}

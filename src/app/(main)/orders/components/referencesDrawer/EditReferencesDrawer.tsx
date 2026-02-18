@@ -206,26 +206,26 @@ export default function EditReferencesDrawer ({
         />
 
         {/* Drawer */}
-        <div className="fixed inset-y-0 right-0 w-[400px] bg-white shadow-2xl z-100 flex flex-col transform transition-transform duration-300 ease-in-out animate-in slide-in-from-right">
+        <div className="fixed inset-y-0 right-0 w-[400px] bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 shadow-2xl z-100 flex flex-col transform transition-transform duration-300 ease-in-out animate-in slide-in-from-right">
      
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-            <h2 className="text-lg font-semibold text-gray-900">Edit References</h2>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+            <h2 className="text-lg font-semibold text-gray-900  dark:text-gray-200">Edit References</h2>
             <button
                 onClick={onClose}
-                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white rounded-full transition-colors"
             >
                 <X className="w-5 h-5" />
             </button>
             </div>
 
             {/* Tabs */}
-            <div className="flex px-6 border-b border-gray-100">
+            <div className="flex px-6 border-b border-gray-100 dark:border-gray-700">
             {tabs.map((tab) => (
                 <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
+                className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-200'}`}
                 >
                 {tab.label}
                 </button>
@@ -242,7 +242,7 @@ export default function EditReferencesDrawer ({
                     return (
                     <div
                         key={ref.id}
-                        className="group flex items-center gap-3 p-2  bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all"
+                        className="group flex items-center gap-3 p-2  border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm transition-all"
                         draggable
                         onDragStart={(e) => handleDragStart(e, ref.id)}
                         onDragOver={(e) => handleDragOver(e, ref.id)}
@@ -315,7 +315,7 @@ export default function EditReferencesDrawer ({
                             // name: e.target.value,
                             // })
                         // }
-                        className="flex-1 px-2 py-1 text-sm text-gray-900 bg-transparent border-none focus:ring-0 focus:bg-gray-50 rounded transition-colors"
+                        className="flex-1 px-2 py-1 text-sm text-gray-900 bg-transparent border-none focus:ring-0 focus:bg-gray-50 rounded transition-colors dark:text-gray-200"
                         placeholder="Label name"
                         />
 
@@ -342,7 +342,7 @@ export default function EditReferencesDrawer ({
             </div>
 
             {/* Footer */}
-            <div className="p-6 bg-gray-50 border-t border-gray-100">
+            <div className="p-6 bg-gray-50 dark:bg-gray-950 dark:border-gray-700 border-t border-gray-100">
             <p className="text-xs text-gray-500 text-center">
                 Changes are saved automatically
             </p>

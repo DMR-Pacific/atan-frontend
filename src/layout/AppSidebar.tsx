@@ -334,7 +334,7 @@ const AppSidebar: React.FC = () => {
             <>
               <div className="flex items-baseline gap-0.5">
                 <span
-                  className={`font-bold tracking-tight text-gray-900 ${'text-4xl'}`}
+                  className={`font-bold tracking-tight text-gray-900 dark:text-gray-200 ${'text-4xl'}`}
                 >
                   atan
                 </span>

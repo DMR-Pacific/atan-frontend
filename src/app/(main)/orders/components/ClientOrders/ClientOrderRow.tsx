@@ -137,23 +137,23 @@ export function ClientOrderRow({
       >
 
 
-      <div className="group grid grid-cols-[40px_minmax(250px,2fr)_minmax(80px,120px)_140px_150px_100px_minmax(200px,3fr)_100px_120px_100px] gap-0 border-b border-gray-100 hover:bg-gray-50 transition-colors items-center min-h-[56px] text-sm text-gray-700 bg-white ">
+      <div className="group grid grid-cols-[40px_minmax(250px,2fr)_minmax(80px,120px)_140px_150px_100px_minmax(200px,3fr)_100px_120px_100px] gap-0 border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors items-center min-h-[56px] text-sm text-gray-700  dark:border-gray-700">
         {/* Checkbox */}
-        <div className="flex justify-center items-center h-full border-r border-gray-100 bg-gray-50/30">
+        <div className="flex justify-center items-center h-full border-r border-gray-100 dark:border-gray-700 ">
           <input
             checked={checked}
             disabled={isSelectDisabled}
             onChange={() => {handleOrderCheck(order.id)}}
             type="checkbox"
-            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer dark:bg-gray-900 dark:border-gray-700"
           />
         </div>
 
         {/* Client PO */}
-        <div className="group px-4 py-2 flex items-center gap-2 border-r border-gray-100 h-full font-medium text-gray-900">
+        <div className="group px-4 py-2 flex items-center gap-2 border-r border-gray-100 h-full font-medium text-gray-900 dark:border-gray-700">
           <div className="flex items-center gap-2 flex-1 truncate">
             
-              {expandable && <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 rounded">
+              {expandable && <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 rounded dark:text-gray-400">
                 {/* {order?.dmrOrders.length > 0 &&  */}
                 {order.dmrOrders.length > 0 ?
 
@@ -241,7 +241,7 @@ export function ClientOrderRow({
 
         {/* Notes */}
 
-         <div className="px-4 py-2 border-r border-gray-100 h-full flex items-center text-gray-600 group ">
+         <div className="px-4 py-2 border-r border-gray-100 dark:border-gray-700 h-full flex items-center text-gray-600 group ">
 
           <EditableTextCell
             id={order.id}
@@ -259,7 +259,7 @@ export function ClientOrderRow({
         </div>
 
         {/* Last Updated */}
-        <div className="px-4 py-2 border-r border-gray-100 h-full flex items-center gap-2 text-xs text-gray-500">
+        <div className="px-4 py-2 border-r border-gray-100 dark:border-gray-700 h-full flex items-center gap-2 text-xs text-gray-500">
           {/* <Avatar
             initials="RT"
             color="bg-blue-400 text-blue-900"
@@ -270,7 +270,7 @@ export function ClientOrderRow({
         </div>
 
         {/* Value */}
-        <div className="px-4 py-2 border-r border-gray-100 h-full flex items-center justify-end text-gray-900 font-medium text-xs">
+        <div className="px-4 py-2 border-r border-gray-100 dark:border-gray-700 h-full flex items-center justify-end text-gray-900 font-medium text-xs">
           {/* {order?.value
             ? `$${order?.value.toLocaleString(undefined, {
                 minimumFractionDigits: 2,

@@ -105,31 +105,31 @@ export default function LinkDmrOrderModal ( ) {
               transition={{
                 duration: 0.2,
               }}
-              className="fixed inset-4 md:inset-8 lg:inset-16 bg-white rounded-xl shadow-2xl z-50 flex flex-col overflow-hidden"
+              className="fixed inset-4 md:inset-8 lg:inset-16 bg-white dark:bg-gray-900 dark:border-gray-700 border rounded-xl shadow-2xl z-50 flex flex-col overflow-hidden"
 
 
             >
               
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-800">
+                  <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     All DMR Orders
                   </h2>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-gray-500 mt-0.5 dark:text-gray-400">
                     Select a DMR order to add to client order
                   </p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-gray-200 rounded-lg transition-colors text-gray-500 hover:text-gray-700"
+                  className="p-2 hover:bg-gray-200 rounded-lg transition-colors text-gray-500 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-white transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Search Bar */}
-              <div className="px-6 py-4 border-b border-gray-200">
+              <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -137,7 +137,7 @@ export default function LinkDmrOrderModal ( ) {
                     placeholder="Search subitems by name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:border-gray-700"
                     autoFocus
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function LinkDmrOrderModal ( ) {
               {/* Subitems List */}
               <div className="flex-1 overflow-y-auto">
                 {allDmrOrderIds.length > 0 ? (
-                  <div className="divide-y divide-gray-100">
+                  <div className="">
 
                     {allDmrOrderIds.filter(orderId => {
                       // filter out already linked DMR orders from choices
@@ -157,13 +157,13 @@ export default function LinkDmrOrderModal ( ) {
                         return (
                         <div
                             key={`${order.id}-${idx}`}
-                            className="px-6 py-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                            className="px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer border-b dark:border-gray-700"
                             onClick={() => handleLink(order.id)}
                         >
                             <div className="flex items-start justify-between gap-4">
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1">
-                                <h3 className="text-sm font-semibold text-gray-800">
+                                <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                                     {order.label}
                                 </h3>
                                 <span
@@ -180,7 +180,7 @@ export default function LinkDmrOrderModal ( ) {
                                 </div>
               
                                 {order.notes && (
-                                <p className="text-xs text-gray-600 line-clamp-2">
+                                <p className="text-xs text-gray-600 line-clamp-2 dark:text-gray-400">
                                     {order.notes}
                                 </p>
                                 )}

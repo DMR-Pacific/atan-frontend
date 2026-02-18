@@ -20,7 +20,7 @@ export default function AddDmrOrderRow ({}: AddDmrOrderRowProps) {
 
     return (
     <div 
-        className="rounded-b-lg bg-white grid grid-cols-[60px_1fr] border-t border-gray-100 hover:bg-gray-50 transition-colors h-[40px] items-center text-sm text-gray-500"
+        className="rounded-b-lg bg-white dark:bg-gray-900 dark:border-gray-700 grid grid-cols-[60px_1fr] border-t border-gray-100 hover:bg-gray-50 transition-colors h-[40px] items-center text-sm text-gray-500"
     >
         <div className="flex justify-center items-center h-full border-r border-gray-100 bg-gray-50/30">
             <div className="w-4 h-4 border border-gray-300 rounded bg-white"></div>

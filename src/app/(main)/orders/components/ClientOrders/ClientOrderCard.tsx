@@ -15,15 +15,15 @@ export default function ClientOrderCard ({
     const { handleShowClientOrderModal} = useOrdersContext()
     return (
         <div
-            className="cursor-pointer bg-white p-4 rounded-md border border-gray-200 shadow-sm hover:border-indigo-200 transition-colors flex flex-col gap-3"
+            className="cursor-pointer bg-white p-4 rounded-md border border-gray-200 shadow-sm hover:border-indigo-200 transition-colors flex flex-col gap-3 dark:bg-gray-900 dark:border-gray-700"
             onClick={() => {handleShowClientOrderModal('edit', order.id)}}
         >
         <div className="flex justify-between items-start">
             <div>
-            <span className="text-sm font-medium text-gray-900 block mb-1">
+            <span className="text-sm font-medium text-gray-900 block mb-1 dark:text-gray-200">
                 {order.label}
             </span>
-            <div className="flex items-center gap-2 text-xs text-gray-500">
+            <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                 <Clock className="w-3 h-3" />
                 <span>Due: {order.dueDate}</span>
             </div>
@@ -50,7 +50,7 @@ export default function ClientOrderCard ({
                 className="scale-90"
             />
             </div>
-            <div className="font-medium text-gray-900 flex items-center gap-1">
+            <div className="font-medium text-gray-900 flex items-center gap-1 dark:text-gray-200">
             <DollarSign className="w-3.5 h-3.5 text-gray-400" />
                 {order.value}
             </div>

@@ -140,9 +140,9 @@ const HEADERS_COLUMN_SIZE_STR: string = DMR_ORDERS_HEADERS.reduce((acc, next) =>
         <FormProvider {...methods} >
 
                 {/* Row */}
-                <div  className={`grid grid-cols-[${HEADERS_COLUMN_SIZE_STR}] gap-0 border-y border-gray-200 bg-white text-xs text-gray-500 font-medium`}>
+                <div  className={`grid grid-cols-[${HEADERS_COLUMN_SIZE_STR}] gap-0 border-y border-gray-200 dark:border-gray-700 text-xs text-gray-500 font-medium`}>
                     {/* Checkbox */}
-                    <div className="flex gap-2 justify-center items-center h-full border-r border-gray-100 bg-gray-50/30">
+                    <div className="flex gap-2 justify-center items-center h-full border-r border-gray-100 dark:border-gray-700 ">
                         <input
                             checked={checked}
                             onChange={() => handleOrderCheck(dmrOrder.id)}
@@ -159,10 +159,10 @@ const HEADERS_COLUMN_SIZE_STR: string = DMR_ORDERS_HEADERS.reduce((acc, next) =>
 
                         </button>}
                     </div>
-                    <div className='group border-r border-gray-100 flex items-center gap-1 flex-1 truncate px-2'>
+                    <div className='group border-r border-gray-100  dark:border-gray-700 flex items-center gap-1 flex-1 truncate px-2'>
                         {/* Expandable */}
                         {expandable &&
-                        <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 rounded">
+                        <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[10px] text-gray-900 dark:text-gray-200 rounded">
                             {(dmrOrder.clientOrders && dmrOrder.clientOrders.length > 0) ?
 
                             <Tooltip>
@@ -202,7 +202,7 @@ const HEADERS_COLUMN_SIZE_STR: string = DMR_ORDERS_HEADERS.reduce((acc, next) =>
                         />
                     </div>
 
-                    <div className="px-2 py-2 flex justify-center border-r border-gray-100 h-full items-center">
+                    <div className="px-2 py-2 flex justify-center border-r border-gray-100  dark:border-gray-700 h-full items-center">
 
                         <AssignedToCell 
                             assignedToList={dmrOrder.assignedToList} 

@@ -56,7 +56,7 @@ export default function EditableTextCell ({
                         handleUpdate()
                     }}
                     rows={rows ? rows : 1}
-                    className="w-full min-h-[60px] p-2 text-sm text-gray-700 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y bg-white shadow-sm"
+                    className="w-full min-h-[60px] p-2 text-sm text-gray-700 border border-blue-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y dark:text-white bg-white shadow-sm dark:bg-gray-900 dark:border-gray-700"
                     // placeholder="Add notes..."
                 />
             ) : (
@@ -64,11 +64,11 @@ export default function EditableTextCell ({
                     onClick={() =>
                         setFocused(true)
                     }
-                    className="w-full text-gray-500 truncate cursor-text hover:bg-gray-100 p-1 rounded transition-colors"
+                    className="w-full text-gray-500 truncate cursor-text hover:bg-gray-100 dark:hover:bg-gray-700 p-1 rounded transition-colors dark:text-gray-200"
                 //   title={displayNote}
                 >
                     {watch(fieldName) || (
-                    <span className="text-gray-400 italic">
+                    <span className="text-gray-400 italic dark:text-gray-300">
                         Click ...
                     </span>
                     )}

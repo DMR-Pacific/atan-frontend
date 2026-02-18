@@ -63,8 +63,8 @@ export function SortByDropdown({ sortBy, sortDirection, options, onChange}: Sort
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-            <div className="px-3 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
+        <div className="absolute right-0 mt-2 w-56  dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200 text-gray-500 dark:text-gray-200  ">
+            <div className="px-3 py-2 text-xs font-medium  border-b border-gray-100  dark:border-gray-700">
                 Sort By
             </div>
 
@@ -74,7 +74,7 @@ export function SortByDropdown({ sortBy, sortDirection, options, onChange}: Sort
                 <button
                     key={option.value}
                     onClick={() => handleOptionClick(option.value)}
-                    className="w-full flex items-center justify-between px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="w-full flex items-center justify-between px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 transition-colors"
                 >
                     <span className={isSelected ? 'font-medium text-blue-600' : ''}>
                     {option.label}
@@ -83,7 +83,7 @@ export function SortByDropdown({ sortBy, sortDirection, options, onChange}: Sort
                     <div className="flex items-center gap-2">
                     {isSelected && (
                         <>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs ">
                             {sortDirection === 'asc' ? '↑' : '↓'}
                         </span>
                         <Check className="w-4 h-4 text-blue-600" />
@@ -94,8 +94,8 @@ export function SortByDropdown({ sortBy, sortDirection, options, onChange}: Sort
                 )
             })}
 
-          <div className="border-t border-gray-100 mt-1 pt-1 px-3 py-2">
-            <div className="text-xs text-gray-500">
+          <div className="border-t border-gray-100 dark:border-gray-700 mt-1 pt-1 px-3 py-2">
+            <div className="text-xs ">
               Click again to reverse order
             </div>
           </div>

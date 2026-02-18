@@ -50,9 +50,9 @@ export default function Dashboard() {
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white px-3 py-2 rounded-lg shadow-lg border border-gray-200">
-          <p className="text-sm font-medium text-gray-900">{payload[0].name}</p>
-          <p className="text-sm text-gray-600">
+        <div className="bg-white  px-3 py-2 rounded-lg shadow-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+          <p className="text-sm font-medium text-gray-900 dark:text-gray-200">{payload[0].name}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-100">
             {payload[0].payload.name === 'Orders'
               ? `${payload[0].totalSales} orders`
               : `$${payload[0].totalSales?.toLocaleString()}`}
@@ -192,7 +192,7 @@ export default function Dashboard() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-200">Dashboard</h2>
         <p className="text-gray-500 mt-1">
           Overview of orders and revenue
         </p>
@@ -237,10 +237,10 @@ export default function Dashboard() {
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Orders by Status Pie Chart */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 dark:bg-gray-900 dark:border-gray-700">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
                 Orders by     
                 <select onChange={(e) => setPieChartType(e.target.value as ApiRefType)}>
                   <option value='status'>Status</option>
@@ -249,7 +249,7 @@ export default function Dashboard() {
                   <option value='clientType'>Client Type</option>
                 </select>
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-100 mt-1">
                 Distribution of orders
               </p>
             </div>
@@ -281,13 +281,13 @@ export default function Dashboard() {
         </div>
 
         {/* Revenue by Client Type */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6 dark:bg-gray-900 dark:border-gray-700">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
                 Revenue by Client Type
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 mt-1 dark:text-gray-100">
                 Total revenue breakdown
               </p>
             </div>
@@ -332,13 +332,13 @@ export default function Dashboard() {
       </div>
 
       {/* Recent High-Value Orders */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 dark:bg-gray-900 dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
               High-Value Active Orders
             </h3>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-500 mt-1 dark:text-gray-100">
               Top 5 orders by sale
             </p>
           </div>
@@ -357,7 +357,7 @@ export default function Dashboard() {
               return (
                 <div
                   key={order.id}
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
                   <div className="flex items-center gap-3 flex-1">
                     <div 
@@ -376,7 +376,7 @@ export default function Dashboard() {
                         })}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">
+                      <p className="font-medium text-gray-900 dark:text-gray-200">
                         {order.label}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
@@ -397,7 +397,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-gray-900">
+                    <p className="font-bold text-gray-900 dark:text-gray-200">
                       ${order?.value?.toLocaleString()}
                     </p>
                     <p className="text-xs text-gray-500">{new Date(order.updatedAt.split('.')[0]).toLocaleDateString('en-US')}</p>

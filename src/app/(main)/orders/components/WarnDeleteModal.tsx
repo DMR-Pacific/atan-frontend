@@ -86,17 +86,17 @@ export function WarnDeleteModal({
       {/* Modal Panel */}
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg transform overflow-hidden rounded-xl bg-white shadow-2xl transition-all animate-in zoom-in-95 duration-200 sm:my-8"
+        className="relative w-full max-w-lg transform overflow-hidden rounded-xl bg-white border dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 shadow-2xl transition-all animate-in zoom-in-95 duration-200 sm:my-8"
       >
         {/* Header */}
-        <div className="flex items-start justify-between border-b border-gray-100 px-6 py-5">
+        <div className="flex items-start justify-between border-b border-gray-100 px-6 py-5 dark:border-gray-700">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600">
               <AlertTriangle className="h-5 w-5" />
             </div>
             <div>
               <h3
-                className="text-lg font-semibold leading-6 text-gray-900"
+                className="text-lg font-semibold leading-6 text-gray-900 dark:text-gray-200"
                 id="modal-title"
               >
                 Delete Orders
@@ -108,7 +108,7 @@ export function WarnDeleteModal({
           </div>
           <button
             type="button"
-            className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="rounded-md p-2 dark:hover:bg-gray-800 dark:text-white transition-colors text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             onClick={() => onClose()}
           >
             <span className="sr-only">Close</span>
@@ -141,7 +141,7 @@ export function WarnDeleteModal({
             <label className="mb-2 block text-sm font-medium text-gray-700">
               Orders to be deleted:
             </label>
-            <div className="max-h-60 overflow-y-auto rounded-md border border-gray-200 bg-gray-50 shadow-inner">
+            <div className="max-h-60 overflow-y-auto rounded-md border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 shadow-inner">
               <ul role="list" className="divide-y divide-gray-200">
                 {orderIds.map((id) => {
                   const details = getOrderDetails(id)
@@ -149,22 +149,22 @@ export function WarnDeleteModal({
                   return (
                     <li
                       key={id}
-                      className="flex items-center justify-between px-4 py-3 hover:bg-gray-100 transition-colors"
+                      className="flex items-center justify-between px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700 dark:border-gray-700 cursor-pointer transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded bg-white border border-gray-200 text-gray-400">
+                        <div className="flex h-8 w-8 items-center justify-center rounded bg-white dark:bg-gray-950 dark:border-gray-700 border border-gray-200 text-gray-400">
                           <Trash2 className="h-4 w-4" />
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium text-gray-900">
+                          <span className="text-sm font-medium text-gray-900 dark:text-gray-200">
                             #{details.label}
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
                             ID: {id}
                           </span>
                         </div>
                       </div>
-                      <span className="text-sm font-mono font-medium text-gray-900">
+                      <span className="text-sm font-mono font-medium text-gray-900 dark:text-gray-400">
                         {formatCurrency(details.value)}
                       </span>
                     </li>
@@ -176,12 +176,12 @@ export function WarnDeleteModal({
         </div>
 
         {/* Footer */}
-        <div className="bg-gray-50 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 border-t border-gray-100">
+        <div className="bg-gray-50 px-6 py-4 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 border-t border-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200">
           <Button
             variant="outline"
             onClick={() => onClose()}
             disabled={isDeleting}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto dark:border-gray-700 dark:text-gray-200 hover:bg-gray-800"
           >
             Cancel
           </Button>

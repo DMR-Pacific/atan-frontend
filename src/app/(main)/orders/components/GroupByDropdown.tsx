@@ -117,9 +117,9 @@ export function GroupByDropdown({
     return (
         <div
             ref={dropdownRef}
-            className="absolute top-full mt-1 right-0 bg-white rounded-lg shadow-lg border border-gray-200 w-56 py-2 z-30"
+            className="absolute top-full mt-1 right-0 bg-white  dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200 rounded-lg shadow-lg border border-gray-200 w-56 py-2 z-30"
         >
-            <div className="px-3 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
+            <div className="px-3 py-2 text-xs font-medium text-gray-500 border-b border-gray-100 dark:border-gray-700">
                 Group Options
             </div>
             <div className="py-1 max-h-80 overflow-y-auto">
@@ -130,7 +130,7 @@ export function GroupByDropdown({
                         setGroupBy(option.id)
                         onClose()
                     }}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-gray-50 transition-colors ${selectedColumn === option.id ? 'bg-blue-50' : ''}`}
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm hover:bg-gray-50 transition-colors ${selectedColumn === option.id ? 'bg-blue-100 dark:bg-blue-100' : ''}`}
                 >
                     <div
                         className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 ${option.iconBg}`}
@@ -138,7 +138,7 @@ export function GroupByDropdown({
                         {option.icon}
                     </div>
                     <span
-                        className={`text-left ${selectedColumn === option.id ? 'font-medium text-gray-900' : 'text-gray-700'}`}
+                        className={`text-left ${selectedColumn === option.id ? 'font-medium text-gray-900' : 'text-gray-700 dark:text-gray-200'}`}
                     >
                         {option.label}
                     </span>

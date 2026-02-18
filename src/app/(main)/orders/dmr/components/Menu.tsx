@@ -80,12 +80,12 @@ export default function Menu () {
   }
   
   return (
-    <div className=" bg-white text-gray-900 font-sans mb-4">
+    <div className=" text-gray-900 font-sans mb-4">
  
       {/* Action Toolbar */}
-      <div className="border-gray-200 bg-white py-3 flex flex-col items-start gap-4 rounded-lg">
+      <div className="border-gray-200  py-3 flex flex-col items-start gap-4 rounded-lg">
         <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight dark:text-gray-200">
             DMR Orders
           </h1>
           {/* <div className="h-6 w-px bg-gray-300 mx-2 hidden md:block"></div> */}

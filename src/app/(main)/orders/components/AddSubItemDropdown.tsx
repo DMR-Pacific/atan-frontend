@@ -16,10 +16,10 @@ export default function AddSubItemDropdown ({onNew, onExisting} : AddSubItemDrop
 
             <DropdownMenuContent
                 align="start"
-                className="bg-white shadow-md rounded-md w-48 py-1 z-100"
+                className="bg-white dark:bg-gray-900 border dark:border-gray-700 dark:text-gray-200 shadow-md rounded-md w-48 py-1 z-100"
             >
                 <DropdownMenuItem
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-green-600 flex gap-2 items-center"
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-green-600 flex gap-2 items-center"
                     onClick={onNew}
                 >
                     <PlusCircle size={14} />
@@ -28,7 +28,7 @@ export default function AddSubItemDropdown ({onNew, onExisting} : AddSubItemDrop
                     </span>
                 </DropdownMenuItem>
                 <DropdownMenuItem 
-                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-blue-600 flex gap-2 items-center"
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-blue-600 flex gap-2 items-center"
                     onClick={onExisting}
                 >
                     <FolderPlus size={14} />

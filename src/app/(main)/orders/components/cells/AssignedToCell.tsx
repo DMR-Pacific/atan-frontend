@@ -76,7 +76,7 @@ export default function AssignedToCell ({assignedToList, handleAssign, handleUna
             </div>
 
             {isMenuOpen &&
-            <div className="absolute top-full left-1/2 mt-1 z-50 bg-white border rounded shadow-lg p-4 transform -translate-x-1/2 w-100">
+            <div className="absolute top-full left-1/2 mt-1 z-50 bg-white border rounded shadow-lg p-4 transform -translate-x-1/2 w-100 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200">
                 {/* Current assignments */}
                 <div className="flex gap-4">
                     {assignedToList.map((assignedUser, i) => {

@@ -107,7 +107,6 @@ export default function ClientOrderModal ({
     if (!isOpen) return null
     if (mode =='edit' && orderId == undefined) return <div>No client order id to edit</div>
     if (mode =='add-link' && !linkToOrderId) return  <div>No dmr order id passed to link</div>
-
     return (
         <>
             <div
@@ -147,15 +146,15 @@ export default function ClientOrderModal ({
                         scale: 0.95,
                         y: 20,
                     }}
-                    className="relative w-full max-w-3xl bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+                    className="relative w-full max-w-3xl bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] dark:bg-gray-900 dark:border-gray-700"
                     >
                         <form
                         
                             onSubmit={handleSubmit(submitHandler)}
                         >
-
+                            
                             {/* Header */}
-                            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradiant-to-r from-blue-50 to white">
+                            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradiant-to-r from-blue-50-to-white dark:border-gray-700">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
                                         <Plus className="w-5 h-5 text-blue-600"/>
@@ -163,35 +162,35 @@ export default function ClientOrderModal ({
                                     </div>
                                     {mode == 'add' &&
                                     <div>
-                                        <h2 className="text-xl font-bold text-gray-900">
+                                        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-200">
                                             Add New Order
                                         </h2>
-                                        <p className="text-sm text-gray-500 mt-0.5">
+                                        <p className="text-sm text-gray-500 mt-0.5 dark:text-gray-400">
                                             Create a new client order
                                         </p>
                                     </div>}
                                     {mode == 'add-link' &&
                                     <div>
-                                        <h2 className="text-xl font-bold text-gray-900">
+                                        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-200">
                                             Link New Client Order
                                         </h2>
-                                        <p className="text-sm text-gray-500 mt-0.5">
+                                        <p className="text-sm text-gray-500 mt-0.5 dark:text-gray-400">
                                             Create a new client order to link
                                         </p>
                                     </div>}
                                     {mode == 'edit' &&
                                     <div>
-                                        <h2 className="text-xl font-bold text-gray-900">
+                                        <h2 className="text-xl font-bold text-gray-900 dark:text-gray-200">
                                             Edit Order
                                         </h2>
-                                        <p className="text-sm text-gray-500 mt-0.5">
+                                        <p className="text-sm text-gray-500 mt-0.5 dark:text-gray-400">
                                             Order: <span className="font-medium text-gray-500">{watch('label')}</span> 
                                         </p>
                                     </div>}
                                 </div>
                                 <button
                                     type='button'
-                                    className="rounded-lg p-2 hover:bg-gray-100 transition-colors text-gray-400 hover:text-gray-600"
+                                    className="rounded-lg p-2 hover:bg-gray-100 transition-colors text-gray-400 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-white transition-colors"
                                     onClick={onClose}
                                 >
                                     <X className="w-5 h-5" />
@@ -204,17 +203,19 @@ export default function ClientOrderModal ({
                             <div 
                                 className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]"
                             >
+                            
+                  
                                 <div className='space-y-5'>
 
                                     {/* Order Number */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                             Order Number <span className="text-red-500">*</span>
                                         </label>
                                         <input
                                             type="text"
                                             className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 transition-all ${errors.label ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'}`}
-                                            {...register('label')}
+                                            {...register('label', {required: "Order number is required."})}
                                             placeholder="e.g., PO# P2600152_GCC"
 
                                         />
@@ -229,7 +230,7 @@ export default function ClientOrderModal ({
 
                                     {/* Owners */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                             Assigned To    
                                         </label>
                                         <div className="flex flex-wrap gap-2">
@@ -257,17 +258,17 @@ export default function ClientOrderModal ({
                                     {/* Row: Status & Priority */}
                                     <div className=" grid grid-cols-2 gap-4">
                                         <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                             Status
                                         </label>
                                         <select
                                             {...register('statusId')}
                                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         >
-                                                <option value=""></option>
+                                                <option className="bg-gray-950" value=""></option>
 
                                             {references.status.map((status) => (
-                                            <option key={status.id} value={status.id}>
+                                            <option className="bg-gray-950" key={status.id} value={status.id}>
                                                 {status.label}
                                             </option>
                                             ))}
@@ -275,7 +276,7 @@ export default function ClientOrderModal ({
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                                 Priority
                                             </label>
                                             <select
@@ -283,35 +284,41 @@ export default function ClientOrderModal ({
                                     
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                             >
-                                                <option value=""></option>
+                                                <option className="bg-gray-950" value=""></option>
 
                                                 {references.priority.map((priority) => (
-                                                <option key={priority.id} value={priority.id}>
+                                                <option className="bg-gray-950" key={priority.id} value={priority.id}>
                                                     {priority.label}
                                                 </option>
                                                 ))}
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                                 Category
                                             </label>
                                             <select
-                                                {...register('categoryId')}
+                                                {...register('categoryId', { required: "Category is required." })}
                                     
-                                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                className={`w-full px-3 py-2 border border-gray-300 rounded-lg ${errors.label ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'}`}
                                             >
-                                                <option value=""></option>
+                                                <option className="bg-gray-950" value=""></option>
 
                                                 {references.category.map((category) => (
-                                                <option key={category.id} value={category.id}>
+                                                <option className="bg-gray-950" key={category.id} value={category.id}>
                                                     {category.label}
                                                 </option>
                                                 ))}
                                             </select>
+                                            {errors.categoryId && (
+                                            <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                                                <AlertCircle className="w-3 h-3" />
+                                                {errors.categoryId.message}
+                                            </p>
+                                            )}
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                                 Client Type
                                             </label>
                                             <select
@@ -319,10 +326,10 @@ export default function ClientOrderModal ({
                                     
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                             >
-                                                <option value=""></option>
+                                                <option className="bg-gray-950" value=""></option>
 
                                                 {references.clientType.map((clientType) => (
-                                                <option key={clientType.id} value={clientType.id}>
+                                                <option className="bg-gray-950" key={clientType.id} value={clientType.id}>
                                                     {clientType.label}
                                                 </option>
                                                 ))}
@@ -333,7 +340,7 @@ export default function ClientOrderModal ({
                                     {/* Row: Due Date & Value */}
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                             Due Date <span className="text-red-500">*</span>
                                         </label>
                                         <div className="relative">
@@ -354,7 +361,7 @@ export default function ClientOrderModal ({
                                         </div>
 
                                         <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                             Value ($) <span className="text-red-500">*</span>
                                         </label>
                                         <div className="relative">
@@ -378,7 +385,7 @@ export default function ClientOrderModal ({
 
                                     {/* Notes */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-500 mb-2">
                                         Notes
                                         </label>
                                         <textarea
@@ -393,11 +400,11 @@ export default function ClientOrderModal ({
 
                             </div>
                             {/* Footer */}
-                            <div className="flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
+                            <div className="flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50 dark:bg-gray-900 dark:border-gray-700">
                                 <button
                                     type="button"
                                     onClick={onClose}
-                                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                                 >
                                     Cancel
                                 </button>

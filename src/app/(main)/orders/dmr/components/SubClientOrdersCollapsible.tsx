@@ -30,8 +30,8 @@ export default function SubClientOrdersCollapsible ({subOrderIds, parentId} : Su
         selectedDmrRows
     } = useDmrOrdersTableContext()
     return (
-        <div className="bg-gray-50/80 border-t border-gray-100 pl-2  grid grid-cols-[40px_1fr]">
-            <div className="w-10 flex-shrink-0 border-r border-gray-100 relative">
+        <div className="bg-gray-600/80 border-t border-gray-100   grid grid-cols-[60px_1fr]">
+            <div className=" flex-shrink-0 border-r border-gray-100 dark:border-gray-400 relative">
                 <div 
                     style={{backgroundColor: 'gray'}}
                     className="h-full absolute top-0 bottom-4 left-1/2 w-[2px] bg-gray-200 opacity-30 -translate-x-1/2 rounded-b-full"
@@ -85,7 +85,7 @@ export default function SubClientOrdersCollapsible ({subOrderIds, parentId} : Su
                             ))}
                         </div>}
                         {viewMode == 'rows' && 
-                        <div>
+                        <div className="  dark:border-gray-700 dark:border">
                             <ClientOrderHeader />
                             {subOrderIds.map((clientOrderId) => (
                                 <ClientOrderRow
