@@ -30,7 +30,7 @@ export default function SubClientOrdersCollapsible ({subOrderIds, parentId} : Su
         selectedDmrRows
     } = useDmrOrdersTableContext()
     return (
-        <div className="bg-gray-600/80 border-t border-gray-100   grid grid-cols-[60px_1fr]">
+        <div className="bg-opacity-80 border-t border-gray-100   grid grid-cols-[40px_1fr]">
             <div className=" flex-shrink-0 border-r border-gray-100 dark:border-gray-400 relative">
                 <div 
                     style={{backgroundColor: 'gray'}}

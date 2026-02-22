@@ -14,6 +14,7 @@ export default function DmrOrdersTableHeader () {
 }, "")
     
     return (
+        <div>
 
             <div 
             // 60px_250px_minmax(80px,120px)_140px__140px_150px_275px
@@ -29,7 +30,11 @@ export default function DmrOrdersTableHeader () {
                     </div>
                 ))}
 
-            </div>
 
+            </div>
+            <div className="grid-cols-[60px_250px_minmax(80px,120px)_140px_140px_150px_275px]"/>
+        </div>
     )
 }
+
+

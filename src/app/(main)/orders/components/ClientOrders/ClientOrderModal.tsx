@@ -265,10 +265,10 @@ export default function ClientOrderModal ({
                                             {...register('statusId')}
                                             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         >
-                                                <option className="bg-gray-950" value=""></option>
+                                                <option className="dark:bg-gray-950" value=""></option>
 
                                             {references.status.map((status) => (
-                                            <option className="bg-gray-950" key={status.id} value={status.id}>
+                                            <option className="dark:bg-gray-950" key={status.id} value={status.id}>
                                                 {status.label}
                                             </option>
                                             ))}
@@ -284,10 +284,10 @@ export default function ClientOrderModal ({
                                     
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                             >
-                                                <option className="bg-gray-950" value=""></option>
+                                                <option className="dark:bg-gray-950" value=""></option>
 
                                                 {references.priority.map((priority) => (
-                                                <option className="bg-gray-950" key={priority.id} value={priority.id}>
+                                                <option className="dark:bg-gray-950" key={priority.id} value={priority.id}>
                                                     {priority.label}
                                                 </option>
                                                 ))}
@@ -302,10 +302,10 @@ export default function ClientOrderModal ({
                                     
                                                 className={`w-full px-3 py-2 border border-gray-300 rounded-lg ${errors.label ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'}`}
                                             >
-                                                <option className="bg-gray-950" value=""></option>
+                                                <option className="dark:bg-gray-950" value=""></option>
 
                                                 {references.category.map((category) => (
-                                                <option className="bg-gray-950" key={category.id} value={category.id}>
+                                                <option className="dark:bg-gray-950" key={category.id} value={category.id}>
                                                     {category.label}
                                                 </option>
                                                 ))}
@@ -326,10 +326,10 @@ export default function ClientOrderModal ({
                                     
                                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                             >
-                                                <option className="bg-gray-950" value=""></option>
+                                                <option className="dark:bg-gray-950" value=""></option>
 
                                                 {references.clientType.map((clientType) => (
-                                                <option className="bg-gray-950" key={clientType.id} value={clientType.id}>
+                                                <option className="dark:bg-gray-950" key={clientType.id} value={clientType.id}>
                                                     {clientType.label}
                                                 </option>
                                                 ))}

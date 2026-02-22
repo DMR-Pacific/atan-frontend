@@ -69,7 +69,7 @@ export default function DmrOrdersSubTable () {
       <div 
         // className='py-4 pr-4'
       >
-
+          
           <DmrOrdersTableHeader />
           <div className="rounded-b-lg pb-">
             {subDmrOrderIds.map((subDmrOrderId, i) => (
