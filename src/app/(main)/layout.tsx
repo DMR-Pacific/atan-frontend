@@ -21,8 +21,9 @@ export default function AdminLayout({
     ? "lg:ml-[290px]"
     : "lg:ml-[90px]";
 
+    // if no accessToken or previous acccessToken expired, redirect to signin
     useEffect(() => {
-      if (localStorage.getItem('accessToken') == '' || ( localStorage.getItem('expiration') && new Date(localStorage.getItem('expiration') as string) < new Date()) ) redirect('/signin')
+      if (localStorage.getItem('accessToken') == null || ( localStorage.getItem('expiration') && new Date(localStorage.getItem('expiration') as string) < new Date()) ) redirect('/signin')
     }, [])
 
   return (
