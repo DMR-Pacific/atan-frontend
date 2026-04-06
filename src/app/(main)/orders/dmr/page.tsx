@@ -1,19 +1,13 @@
 'use client'
 
-import { Clock, DollarSign, Info } from "lucide-react";
-import { DMR_ORDERS_HEADERS } from "../components/DmrOrders/DmrOrdersSubTable";
-import { DmrOrderDto } from "@/types/orders/DmrOrderDto";
-import { useEffect, useState } from "react";
-import Menu from "./components/Menu";
-import { doSearchDmrOrders } from "@/utils/dmrOrders/doSearchDmrOrders";
-import DmrOrderRow from "./components/DmrOrderRow";
+
+import Menu from "@/components/orders/dmrOrder/Menu";
+import DmrOrderRow from "../../../../components/orders/dmrOrder/DmrOrderRow";
 import { DmrOrdersTableContext, useDmrOrdersTableContext } from "@/context/DmrOrdersTableContext";
-import { SelectedRowToolbar } from "./components/SelectedRowToolbar";
-import DmrOrderCard from "./components/DmrOrderCard";
-import DmrOrdersTableHeader from "./components/DmrOrdersTableHeader";
-import ClientOrderCard from "../components/ClientOrders/ClientOrderCard";
+import { SelectedRowToolbar } from "../../../../components/orders/dmrOrder/SelectedRowToolbar";
+import DmrOrderCard from "@/components/orders/dmrOrder/DmrOrderCard";
+import DmrOrdersTableHeader from "@/components/orders/dmrOrder/DmrOrdersTableHeader";
 import { useOrdersContext } from "@/context/OrdersContext";
-import AddDmrOrderRow from "../components/DmrOrders/AddDmrOrderRow";
 
 export default function DmrOrders () {
     const { masterDmrOrders,} = useOrdersContext()
@@ -45,7 +39,7 @@ export default function DmrOrders () {
                             <div key={`dmrRow-${dmrId}`}>
 
                                 <DmrOrderRow 
-                                    dmrOrder={masterDmrOrders[dmrId]} 
+                                    dmrOrderMaster={masterDmrOrders[dmrId]} 
                                     checked={selectedDmrRows.includes(dmrId)}
                                     handleOrderCheck={handleOrderCheck}
                                     isSelectDisabled={false}
@@ -60,7 +54,6 @@ export default function DmrOrders () {
                 </div>}
                 {viewMode == 'cards' &&
                 <div className='grid grid-cols-3 gap-2'>
-
                     {dmrOrderIds.map((dmrId) => (
                     <DmrOrderCard 
                         key={`dmrCard-${dmrId}`}

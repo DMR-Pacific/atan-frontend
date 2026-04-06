@@ -1,1 +1,1 @@
-export type TableName = 'client_orders' | 'dmr_orders'
+export type TableName = 'client_orders' | 'dmr_orders' | 'manufacturer_orders'

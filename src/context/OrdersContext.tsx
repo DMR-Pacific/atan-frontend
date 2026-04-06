@@ -2,11 +2,9 @@
 
 import { useAssignableUsers } from "@/hooks/useAssignableUsers"
 import { useReference } from "@/hooks/useReference"
-import { addClientOrder, addDmrOrder, assignUserToClientOrder, assignUserToDmrOrder, deleteClientOrderList, deleteDmrOrderList, linkClientOrderDmrOrder, searchClientOrders, unassignUserFromClientOrder, unassignUserFromDmrOrder, updateClientOrder, updateDmrOrder } from "@/services/OrderService"
 import { getReference } from "@/services/ReferenceService"
-import { AssignedToDto } from "@/types/AssignedToDto"
+import { AssignedUserDto } from "@/types/AssignedUserDto"
 import { BaseReferenceType } from "@/types/BaseReferenceType"
-import { ClientOrderDto } from "@/types/orders/ClientOrderDto"
 import { ColumnName } from "@/types/ColumnName"
 import { ApiRefType } from "@/types/api/ApiRefType"
 import React, { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react"
@@ -14,15 +12,20 @@ import { toast } from "sonner"
 import { SortByType } from "@/types/api/SortByType"
 import { SortDirectionType } from "@/types/api/SortDirectionType"
 import { TableName } from "@/types/api/TableName"
-import { DmrOrderDto } from "@/types/orders/DmrOrderDto"
-import { DmrOrder } from "@/types/orders/DmrOrder"
 import { YesNo } from "@/types/msic"
-import { DmrOrderUpdateDto } from "@/types/orders/DmrOrderUpdateDto"
-import { ClientOrderUpdateDto } from "@/types/orders/ClientOrderUpdateDto"
-import { ClientOrderAddDto } from "@/types/orders/ClientOrderAddDto"
-import { DmrOrderMaster, mapDmrOrderDtoToMaster } from "@/types/orders/DmrOrderMaster"
-import { ClientOrderMaster, mapClientOrderDtoToMaster } from "@/types/orders/ClientOrderMaster"
+import { ClientOrderChildDto, ClientOrderUpdateDto } from "@/types/orders/ClientOrderTypes"
+
 import { OrderId } from "@/types/orders/order-types"
+
+import { addManufacturerOrder, deleteManufacturerOrder, updateManufacturerOrder } from "@/services/orders/ManufacturerOrderService"
+import { ManufacturerOrderAddDto, ManufacturerOrderChildDto, ManufacturerOrderDto, ManufacturerOrderMaster, ManufacturerOrderUpdateDto, mapManufacturerOrderDtoToMaster } from "@/types/orders/ManufacturerOrderTypes"
+import { DmrOrderChildDto, DmrOrderDto, DmrOrderMaster, DmrOrderUpdateDto, mapDmrOrderDtoToMaster } from "@/types/orders/DmrOrderTypes"
+import { ClientOrderAddDto, ClientOrderDto, ClientOrderMaster, mapClientOrderDtoToMaster } from "@/types/orders/ClientOrderTypes"
+import { addClientOrder, assignUserToClientOrder, linkClientOrderDmrOrder, searchClientOrders, unassignUserFromClientOrder, unlinkClientOrderDmrOrder, updateClientOrder } from "@/services/orders/ClientOrderService"
+import { addDmrOrder, assignUserToDmrOrder, createDmrOrderForClientOrder, unassignUserFromDmrOrder, updateDmrOrder } from "@/services/orders/DmrOrderService"
+import { GlobalOperator, SearchRequestDto } from "@/types/api/SearchRequestDto"
+import { Operation } from "@/types/api/FilterCriteriaDto"
+// import { linkClientOrderDmrOrder } from "@/services/orders/OrderService"
 
 export type GroupId = number
 
@@ -59,22 +62,32 @@ interface OrdersContextType {
     // ======================
     references: {[K in ApiRefType]: BaseReferenceType[]}
     setReferences: React.Dispatch<React.SetStateAction<{[K in ApiRefType]: BaseReferenceType[]}>>
-    assignableUsers: AssignedToDto[]
+    assignableUsers: AssignedUserDto[]
 
     masterClientOrders: {[key: OrderId]: ClientOrderMaster}
     masterDmrOrders: {[key: OrderId]: DmrOrderMaster}
+    masterManufacturerOrders: Record<OrderId, ManufacturerOrderMaster>
+
 
     addClientDtosToMaster: (clientOrderDtos: ClientOrderDto[], overwrite: boolean, cascade: boolean) => void
     addDmrDtosToMaster: (dmrOrderDtos: DmrOrderDto[], overwrite: boolean, cascade: boolean) => void
+    addManufacturerDtosToMaster: (manufacturerOrderDtos: ManufacturerOrderDto[], overwrite: boolean, cascade: boolean) => void
+
     doAddClientOrder: (dto: ClientOrderAddDto) => Promise<void>
     updateMasterClientDmrLink: (clientId: OrderId, dmrId: OrderId) => void
 
-    doSearchClientOrders: (searchQuery: string, sortBy: SortByType, SortDirection: SortDirectionType) => Promise<ClientOrderDto[] | undefined> 
+    doSearchClientOrders: (searchRequestDto: SearchRequestDto) => Promise<ClientOrderDto[] | undefined> 
 
 
     doAddDmrOrder: (dto: DmrOrderUpdateDto) => void
-    doUpdateClientOrder: (id: number, formValues: ClientOrderUpdateDto) => Promise<void>
-    doUpdateDmrOrder: (id: number, formValues: DmrOrderUpdateDto) => Promise<void>
+    doCreateDmrOrderForClientOrder: (orderId: number) => void
+    doAddManufacturerOrder: (dto: ManufacturerOrderAddDto) => void
+    doUpdateClientOrder: (id: OrderId, formValues: ClientOrderUpdateDto) => Promise<void>
+
+    doUpdateDmrOrder: (id: OrderId, formValues: DmrOrderUpdateDto) => Promise<void>
+    doUpdateManufacturerOrder: (id: OrderId, formValues: ManufacturerOrderUpdateDto) => Promise<void>
+    doDeleteManufacturerOrder: (id: OrderId) => Promise<void>
+
 
     doAssignUserClientOrder: (userId: number, orderId: number) => void
     doUnassignUserClientOrder: (userId: number, orderId: number) => void
@@ -82,6 +95,7 @@ interface OrdersContextType {
     doUnassignUserDmrOrder: (userId: number, orderId: number) => void
 
     doLinkClientOrderDmrOrder: (clientOrderId: OrderId, dmrOrderId: OrderId) => void
+    doUnlinkClientOrderDmrOrder: (clientOrderId: OrderId, dmrOrderId: OrderId) => void
 
     showErrorBanner: boolean
     setShowErrorBanner: React.Dispatch<React.SetStateAction<boolean>>
@@ -91,11 +105,17 @@ interface OrdersContextType {
     linkClientModalOptions: LinkModalOptions
     setLinkClientModalOptions: React.Dispatch<React.SetStateAction<LinkModalOptions>>
 
+    
+    clientOrderModalOptions: OrderModalOptions
+    setClientOrderModalOptions: React.Dispatch<React.SetStateAction<OrderModalOptions>>
+
     dmrOrderModalOptions: OrderModalOptions
     setDmrOrderModalOptions: React.Dispatch<React.SetStateAction<OrderModalOptions>>
 
-    clientOrderModalOptions: OrderModalOptions
-    setClientOrderModalOptions: React.Dispatch<React.SetStateAction<OrderModalOptions>>
+    
+    manufacturerOrderModalOptions: OrderModalOptions
+    setManufacturerOrderModalOptions: React.Dispatch<React.SetStateAction<OrderModalOptions>>
+
 
     deleteOrderModalOptions: DeleteOrderModalOptions
     setDeleteOrderModalOptions: React.Dispatch<React.SetStateAction<DeleteOrderModalOptions>>
@@ -105,6 +125,9 @@ interface OrdersContextType {
 
     handleShowClientOrderModal: (mode: OrderModalMode, orderId?: number, linkToOrderId?: number, onSubmit?: () => void) => void
     handleUnshowClientOrderModal: () => void
+
+    handleShowManufacturerOrderModal: (mode: OrderModalMode, orderId?: number, linkToOrderId?: number, onSubmit?: () => void) => void
+    handleUnshowManufacturerOrderModal: () => void
 
     idForHistory: number | null
     setIdForHistory: React.Dispatch<React.SetStateAction<number | null>>
@@ -132,13 +155,16 @@ interface OrdersContextType {
 const OrdersContext = createContext<OrdersContextType | undefined>(undefined)
 
 export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
-    const [masterClientOrders, setMasterClientOrders] = useState<{[key: number]: ClientOrderMaster}>({})
-    const [masterDmrOrders, setMasterDmrOrders] = useState<{[key: number]: DmrOrderMaster}>({})
+    const [masterClientOrders, setMasterClientOrders] = useState<Record<OrderId, ClientOrderMaster>>({})
+    const [masterDmrOrders, setMasterDmrOrders] = useState<Record<OrderId, DmrOrderMaster>>({})
+    const [masterManufacturerOrders, setMasterManufacturerOrders] = useState<Record<OrderId, ManufacturerOrderMaster>>({})
 
-    const [idsToLink, setIdsToLink] = useState<number[][]>([])
+    const [idsToLink, setIdsToLink] = useState<OrderId[][]>([])
+    const [dmrAndManufacturerIdsToLink, setDmrAndManufacturerIdsToLink] = useState<OrderId[][]>([])
+
     
     
-    const [idForHistory, setIdForHistory] = useState<number | null>(null)
+    const [idForHistory, setIdForHistory] = useState<OrderId | null>(null)
 
 
 
@@ -151,9 +177,7 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
     // const [assignableUsers, setAssignableUsers] = useState<AssignedToDto[]>([])
     const [showErrorBanner, setShowErrorBanner] = useState<boolean>(false)
 
-    const [orders, setOrders] = useState<{[key: number]: any}>({})
     
-
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const [isHistoryDrawerOpen, setIsHistoryDrawerOpen] = useState(false)
     const [historyTableName, setHistoryTableName] = useState<TableName>('client_orders')
@@ -164,14 +188,20 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
 
     
     const [showErrorModal, setShowErrorModal] = useState<boolean>(false)
-    const [dmrOrderModalOptions, setDmrOrderModalOptions] = useState<OrderModalOptions>({
-        visible: false,
-        mode: 'add'        
-    })
+
     const [clientOrderModalOptions, setClientOrderModalOptions] = useState<OrderModalOptions>({
         visible: false,
         mode: 'add'        
     })
+    const [dmrOrderModalOptions, setDmrOrderModalOptions] = useState<OrderModalOptions>({
+        visible: false,
+        mode: 'add'        
+    })
+    const [manufacturerOrderModalOptions, setManufacturerOrderModalOptions] = useState<OrderModalOptions>({
+        visible: false,
+        mode: 'add'        
+    })
+
     const [linkClientModalOptions, setLinkClientModalOptions] = useState<LinkModalOptions>({
         visible: false,
         linkToOrderId: undefined,
@@ -240,6 +270,19 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
             setIdsToLink([])
         }
     }, [masterClientOrders, masterDmrOrders])
+
+    useEffect(() => {
+     if (dmrAndManufacturerIdsToLink.length > 0) {
+            // for each id pair pair the client order id [0] and dmr order id [1]
+            dmrAndManufacturerIdsToLink.forEach(idPair => {
+                //  do it only if both exists
+                if (!(masterDmrOrders[idPair[0]] && masterManufacturerOrders[idPair[1]])) return
+                updateMasterDmrManufacturerLink(idPair[0], idPair[1]) 
+            })
+            
+            setDmrAndManufacturerIdsToLink([])
+        }
+    }, [masterManufacturerOrders, masterDmrOrders])
     
 
     const doRefetchReferences = () => {
@@ -259,22 +302,11 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
     }
 
     
-
-
-
-
-
-
-    
-
-
-
     const openHistoryDrawer = (tableName: TableName, columnName: ColumnName, idForHistory: number) => {
         setHistoryTableName(tableName)
         setIdForHistory(idForHistory)
         setHistoryDrawerTab(columnName)
         setIsHistoryDrawerOpen(true)
-
     }
 
 
@@ -315,17 +347,32 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         })
     }
 
+        const handleShowManufacturerOrderModal = (mode: OrderModalMode, orderId?: number, linkToOrderId?: number, onSubmit?: () => void) => {
+        setManufacturerOrderModalOptions({
+            visible: true,
+            orderId: orderId,
+            mode: mode,
+            linkToOrderId: linkToOrderId,
+            onSubmit: onSubmit || (() => {}),
+        })
+    }
 
-    const doSearchClientOrders= async (searchQuery: string, sortBy: SortByType, SortDirection: SortDirectionType): Promise<ClientOrderDto[] | undefined> => {
+    const handleUnshowManufacturerOrderModal = () => {
+        setManufacturerOrderModalOptions({
+            visible: false,
+            orderId: undefined,
+            mode: 'add'
+        })
+    }
+
+
+    const doSearchClientOrders= async (searchRequestDto: SearchRequestDto): Promise<ClientOrderDto[] | undefined> => {
         try {
-            const searchDto: {[key: string]: any} = {
 
-            }
-
-            if (searchQuery) searchDto['label'] = searchQuery
-            const response = await searchClientOrders(searchDto, sortBy, SortDirection) 
+            const response = await searchClientOrders(searchRequestDto) 
             console.log(response)
-            return response.data.content
+            addClientDtosToMaster(response.data, true, true)
+            return response.data
         
         } catch (err) {
             console.log(err)
@@ -333,25 +380,51 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         }
     }
 
-    /**
-     * 
-     * @param dmrOrderDtos updated dtos
-     * This function takes dto's and sets them into masters for the entire orders layout to access and share a single normalized state per order
-     */
-    const addDmrDtosToMaster = (dmrOrderDtos: DmrOrderDto[], overwrite: boolean, cascade: boolean) => {
+    const addManufacturerDtosToMaster = (manufacturerOrderDtos: (ManufacturerOrderDto | ManufacturerOrderChildDto)[], overwrite: boolean, cascade: boolean) => {
+        setMasterManufacturerOrders(prev => {
+            const tempMaster = {
+                ...prev
+            }
+
+            
+            for (const dto of manufacturerOrderDtos) {
+                // save to master if overwrite is y or if object id doesnt exist in masters yet
+                if (overwrite || !tempMaster[dto.id]) {
+
+                    const manufacturerOrderMaster = mapManufacturerOrderDtoToMaster(dto)
+
+
+                    if (cascade && "dmrOrder" in dto) {
+                        if (dto.dmrOrder) addDmrDtosToMaster([dto.dmrOrder], true, false)
+                    }
+                    // Save to master
+                    tempMaster[dto.id] = manufacturerOrderMaster
+                } 
+            }
+
+            return tempMaster
+        })
+    }
+
+
+    const addDmrDtosToMaster = (dmrOrderDtos: (DmrOrderDto | DmrOrderChildDto)[], overwrite: boolean, cascade: boolean) => {
         setMasterDmrOrders(prev => {
             const tempMaster = {
                 ...prev
             }
 
             for (const dto of dmrOrderDtos) {
+       
                 // save to master if overwrite is y or if object id doesnt exist in masters yet
                 if (overwrite || !tempMaster[dto.id]) {
 
                     const dmrOrderMaster = mapDmrOrderDtoToMaster(dto)
 
                     // save client orders to master and change them to id's
-                    if (cascade && dto.clientOrders)  addClientDtosToMaster(dto.clientOrders, true, false)
+                    if (cascade && "clientOrders" in dto )  {
+                        if (dto.clientOrders) addClientDtosToMaster(dto.clientOrders, true, false)
+                        if (dto.manufacturerOrders) addManufacturerDtosToMaster(dto.manufacturerOrders, true, false)
+                    }
 
                     // Save to master
                     tempMaster[dto.id] = dmrOrderMaster
@@ -363,12 +436,7 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
 
     }
 
-    /**
-     * 
-     * @param clientOrderDtos updated dtos
-     * This function takes dto's and sets them into masters for the entire orders layout to access and share a single normalized state per order
-     */
-    const addClientDtosToMaster = (clientOrderDtos: ClientOrderDto[], overwrite: boolean, cascade: boolean) => {
+    const addClientDtosToMaster = (clientOrderDtos: (ClientOrderDto | ClientOrderChildDto)[], overwrite: boolean, cascade: boolean) => {
         setMasterClientOrders(prev => {
             const tempMaster = {
                 ...prev
@@ -379,7 +447,7 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
                 if (overwrite || !tempMaster[dto.id]) {
 
                     const clientOrderMaster = mapClientOrderDtoToMaster(dto)
-                    if (cascade && dto.dmrOrders)  {
+                    if (cascade && "dmrOrders" in dto)  {
 
                         addDmrDtosToMaster(dto.dmrOrders, true, false)
                     }
@@ -396,7 +464,34 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         
     }
 
+    const updateMasterDmrManufacturerLink = (dmrId: OrderId, manufacturerId: OrderId) => {
+        const dmrOrder = masterDmrOrders[dmrId] 
+        const manufacturerOrder = masterManufacturerOrders[manufacturerId]
 
+        if (!dmrOrder.manufacturerOrderIds.includes(dmrId)) {
+
+            setMasterDmrOrders(prev => ({
+                ...prev,
+                [dmrId]: {
+                    ...prev[dmrId],
+                    manufacturerOrders: [...prev[dmrId]['manufacturerOrderIds'], manufacturerId]
+                }
+            }))
+        }
+
+        if (!manufacturerOrder.dmrOrderId) {
+
+            setMasterManufacturerOrders(prev => ({
+                ...prev,
+                [manufacturerId]: {
+                    ...prev[manufacturerId],
+                    dmrOrder: dmrId
+                }
+            }))            
+ 
+        }
+
+    }
 
     const updateMasterClientDmrLink = (clientId: OrderId, dmrId: OrderId) => {
         const clientOrder = masterClientOrders[clientId]
@@ -407,26 +502,26 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
 
         // if (!(clientOrder && dmrOrder)) return
 
-        if (!clientOrder.dmrOrders.includes(dmrId)) {
+        if (!clientOrder.dmrOrderIds.includes(dmrId)) {
 
             // clientOrder.dmrOrders.push(dmrId)
             setMasterClientOrders(prev => ({
                 ...prev,
                 [clientId]: {
                     ...prev[clientId],
-                    dmrOrders: [...prev[clientId]['dmrOrders'], dmrId]
+                    dmrOrders: [...prev[clientId]['dmrOrderIds'], dmrId]
                 }
             }))
         }
 
-        if (!dmrOrder.clientOrders.includes(clientId)) {
+        if (!dmrOrder.clientOrderIds.includes(clientId)) {
 
             // dmrOrder.clientOrders.push(clientId)
             setMasterDmrOrders(prev => ({
                 ...prev,
                 [dmrId]: {
                     ...prev[dmrId],
-                    clientOrders: [...prev[dmrId]['clientOrders'], clientId]
+                    clientOrders: [...prev[dmrId]['clientOrderIds'], clientId]
                 }
             }))
         }
@@ -448,6 +543,17 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         }
     }
 
+    const doCreateDmrOrderForClientOrder = async (orderId: number) => {
+        try {
+            const response = await createDmrOrderForClientOrder(orderId)
+            
+            addDmrDtosToMaster([response.data], true, true)
+        } catch (err) {
+            toast.error('Failed to add a dmr order. Please try again later')
+
+            console.log(err)
+        }
+    }
 
     const doUpdateDmrOrder = async (id: number, formValues: DmrOrderUpdateDto): Promise<void>  => {
 
@@ -466,8 +572,8 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
             const response = await addClientOrder(dto)
             
 
-            addClientDtosToMaster([response.data], true, false)
-            setIdsToLink(dto.dmrOrderIds.map(id => [response.data.id, id]))
+            addClientDtosToMaster([response.data], true, true)
+            // setIdsToLink(dto.dmrOrderIds.map(id => [response.data.id, id]))
         } catch (err) {
             toast.error('Failed to add order')
             console.log(err)
@@ -477,8 +583,33 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
     const doUpdateClientOrder = async (id: number, formValues: ClientOrderUpdateDto): Promise<void>  => {
         try {
             const response = await updateClientOrder(id, formValues)
-            console.log(response)
             addClientDtosToMaster([response.data], true, false)
+
+        } catch (err) {
+            toast.error('Changes were not saved. Please try again later.')
+            console.log(err)
+        }
+    }
+
+    const doAddManufacturerOrder = async (dto: ManufacturerOrderAddDto) => {
+        try {
+            console.log(dto)
+            const response = await addManufacturerOrder(dto)
+            
+            console.log("MO", response.data)
+            addManufacturerDtosToMaster([response.data], true, true)
+            // setDmrAndManufacturerIdsToLink([[dto.dmrOrderId, response.data.id]])
+        } catch (err) {
+            toast.error('Failed to add order')
+            console.log(err)
+        }
+    }
+
+    const doUpdateManufacturerOrder = async (id: OrderId, formValues: ManufacturerOrderUpdateDto): Promise<void>  => {
+        try {
+            const response = await updateManufacturerOrder(id, formValues)
+            console.log(response)
+            addManufacturerDtosToMaster([response.data], true, false)
 
         } catch (err) {
             toast.error('Changes were not saved. Please try again later.')
@@ -487,20 +618,39 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         }
     }
 
-    const doAssignUserClientOrder = createAssignUserHandler(assignUserToClientOrder, setMasterClientOrders, assignableUsers, "client_orders")
+    const doDeleteManufacturerOrder = async (id: OrderId): Promise<void> => {
+        try {
+            console.log("BEF DELETE", masterManufacturerOrders[id])
+            const response = await deleteManufacturerOrder(id) 
+            setMasterManufacturerOrders(prev => {
+                const { [id]: _, ...rest} = prev
+                return rest
+            })
 
-    const doUnassignUserClientOrder = createUnassignUserHandler(unassignUserFromClientOrder, setMasterClientOrders, assignableUsers, "client_orders")
+        } catch (err) {
+            toast.error('An error occurred deleting manufacturer order. Please try again later.')
+            console.log(err)
+        }
+    }
 
-    const doAssignUserDmrOrder = createAssignUserHandler(assignUserToDmrOrder, setMasterDmrOrders, assignableUsers, "dmr_orders")
 
-    const doUnassignUserDmrOrder = createUnassignUserHandler(unassignUserFromDmrOrder, setMasterDmrOrders, assignableUsers, "dmr_orders")
+    const doAssignUserClientOrder = createAssignUserHandler(assignUserToClientOrder, addClientDtosToMaster, "client_orders")
+
+    const doUnassignUserClientOrder = createUnassignUserHandler(unassignUserFromClientOrder, addClientDtosToMaster, "client_orders")
+
+    const doAssignUserDmrOrder = createAssignUserHandler(assignUserToDmrOrder, addDmrDtosToMaster, "dmr_orders")
+
+    const doUnassignUserDmrOrder = createUnassignUserHandler(unassignUserFromDmrOrder, addDmrDtosToMaster, "dmr_orders")
 
     const doLinkClientOrderDmrOrder = async (clientOrderId: OrderId, dmrOrderId: OrderId) => {
 
         try {
             const response = await linkClientOrderDmrOrder(clientOrderId, dmrOrderId )
-            console.log(response)
-            updateMasterClientDmrLink(clientOrderId, dmrOrderId)
+
+            // we set cascade to true to update the relationship for the new child dmr order as well
+            addClientDtosToMaster([response.data], true, true)
+
+            // updateMasterClientDmrLink(clientOrderId, dmrOrderId)
             
         } catch (err) {
             console.log(err)
@@ -508,30 +658,58 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
         }
     }
 
+
+
+    const doUnlinkClientOrderDmrOrder = async (clientOrderId: number, dmrOrderId: number)=> {
+
+        try {
+            const response = await unlinkClientOrderDmrOrder(clientOrderId, dmrOrderId)
+            // we set cascade to true to update the relationship for the new child dmr order as well
+            addClientDtosToMaster([response.data], true, true)
+
+        } catch (err) {
+            toast.error(`Failed to unlink DMR order (${dmrOrderId}) from client order (${clientOrderId}).`)
+
+            console.log(err)
+        }
+
+    }
+
+
     return (
         <OrdersContext.Provider
             value = {{
                 masterClientOrders,
                 masterDmrOrders, 
+                masterManufacturerOrders,
 
                 addDmrDtosToMaster,
                 addClientDtosToMaster,
+                addManufacturerDtosToMaster,
 
                 updateMasterClientDmrLink,
 
                 doSearchClientOrders,
 
+                
                 doAddClientOrder,
                 doUpdateClientOrder,
 
                 doAddDmrOrder,
+                doCreateDmrOrderForClientOrder,
                 doUpdateDmrOrder,
+
+                doAddManufacturerOrder,
+                doUpdateManufacturerOrder,
+                doDeleteManufacturerOrder,
 
                 doAssignUserClientOrder,
                 doUnassignUserClientOrder,
                 doAssignUserDmrOrder,
                 doUnassignUserDmrOrder, 
+
                 doLinkClientOrderDmrOrder,
+                doUnlinkClientOrderDmrOrder,
 
                 idForHistory, setIdForHistory,
 
@@ -557,12 +735,15 @@ export const OrdersContextProvider = ({children} : {children : ReactNode}) => {
                 
                 openHistoryDrawer,
 
-                
+                // Modal Options
                 clientOrderModalOptions, setClientOrderModalOptions,
                 dmrOrderModalOptions, setDmrOrderModalOptions,
+                manufacturerOrderModalOptions, setManufacturerOrderModalOptions,
+
                 deleteOrderModalOptions, setDeleteOrderModalOptions,
                 handleShowDmrOrderModal, handleUnshowDmrOrderModal,
-                handleShowClientOrderModal, handleUnshowClientOrderModal
+                handleShowClientOrderModal, handleUnshowClientOrderModal,
+                handleShowManufacturerOrderModal, handleUnshowManufacturerOrderModal,
             }}
         >
             {children}
@@ -581,28 +762,18 @@ export const useOrdersContext = () => {
     return context
 }
 
-const createAssignUserHandler = (
-    assignApi: (userId: number, orderId: number) => Promise<any>,
-    setMaster: Dispatch<SetStateAction<{[key: OrderId]: ClientOrderMaster}>> | Dispatch<SetStateAction<{[key: OrderId]: DmrOrderMaster}>>,
-    assignableUsers: AssignedToDto[],
+const createAssignUserHandler = <T, >(
+    assignUserToOrderApiCall: (userId: number, orderId: number) => Promise<any>,
+    addDtosToMaster: (dtos: T[], overwrite: boolean, cascade: boolean) => void,
     tableName: TableName
 ) => {
     return async (userId: number, orderId: number) => {
             try {
-            const response = await assignApi(userId, orderId)
-            console.log(response)
+            const response = await assignUserToOrderApiCall(userId, orderId)
 
-            // update order in masters to include new assignment
-            const newUser = assignableUsers.find(user => user.id == userId)
-            if (newUser) {
-                setMaster((prev: any) => ({
-                    ...prev,
-                    [orderId]: {
-                        ...prev[orderId],
-                        assignedToList: [...prev[orderId]['assignedToList'], newUser]
-                    }
-                }))
-            }
+            console.log("DTO POST ASSIGN" , response.data)
+            addDtosToMaster([response.data], true, true)
+
         } catch (err) {
             toast.error(`Failed to assign user (${userId}) to ${tableName == "client_orders" ? "client" : "DMR"}order (${orderId})`)
             console.log(err)
@@ -610,25 +781,17 @@ const createAssignUserHandler = (
     }
 }
 
-const createUnassignUserHandler = (
-    unassignApi: (userId: number, orderId: number) => Promise<any>,
-    setMaster: Dispatch<SetStateAction<{[key: OrderId]: ClientOrderMaster}>> | Dispatch<SetStateAction<{[key: OrderId]: DmrOrderMaster}>>,
-    assignableUsers: AssignedToDto[],
+const createUnassignUserHandler = <T,>(
+    unassignUserToOrderApiCall: (userId: number, orderId: number) => Promise<any>,
+    addDtosToMaster: (dtos: T[], overwrite: boolean, cascade: boolean) => void,
     tableName: TableName
 ) => {
     return async (userId: number, orderId: number) => {
         try {
-            const response = await unassignApi(userId, orderId)
-            console.log(response)
+            const response = await unassignUserToOrderApiCall(userId, orderId)
 
-            // update masters to remove assignment
-            setMaster((prev: any) => ({
-                ...prev,
-                [orderId]: {
-                    ...prev[orderId],
-                    assignedToList: [...prev[orderId]['assignedToList'].filter((u: AssignedToDto) => u.id != userId)]
-                }
-            }))
+            addDtosToMaster([response.data], true, true)
+
         } catch (err) {
             toast.error(`Failed to unassign user (${userId}) from ${tableName == "client_orders" ? "client" : "DMR"}order (${orderId})`)
             console.log(err)        }

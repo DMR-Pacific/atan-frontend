@@ -1,11 +1,11 @@
 import { getAssignableUsers } from "@/services/ReferenceService";
-import { AssignedToDto } from "@/types/AssignedToDto";
+import { AssignedUserDto } from "@/types/AssignedUserDto";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export function useAssignableUsers () {
 
-    const [assignableUsers, setAssignableUsers] = useState<AssignedToDto[]>([])
+    const [assignableUsers, setAssignableUsers] = useState<AssignedUserDto[]>([])
 
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState(null)

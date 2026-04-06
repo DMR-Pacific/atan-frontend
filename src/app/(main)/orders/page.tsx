@@ -1,19 +1,19 @@
 'use client'
 
-import Tables from "./components/Tables";
-import Menu from "./components/Menu";
+import Tables from "../../../components/orders/clientOrder/Tables";
+import Menu from "../../../components/orders/clientOrder/Menu";
 import { useReference } from "@/hooks/useReference";
 import { useEffect, useState } from "react";
 import { useOrdersContext } from "@/context/OrdersContext";
 import { useAssignableUsers } from "@/hooks/useAssignableUsers";
 import ErrorBanner from "@/components/errors/ErrorBanner";
-import DeleteErrorModal from "./components/errors/DeleteErrorModal";
-import EditReferencesDrawer from "./components/referencesDrawer/EditReferencesDrawer";
+import DeleteErrorModal from "../../../components/errors/DeleteErrorModal";
+import EditReferencesDrawer from "../../../components/drawers/references/EditReferencesDrawer";
 import { Toaster, toast } from "sonner";
-import AddDmrOrdersMenu from "./components/DmrOrders/LinkDmrOrderModal";
-import HistoryDrawer from "./components/historyDrawer/HistoryDrawer";
+import AddDmrOrdersMenu from "../../../components/orders/dmrOrder/LinkDmrOrderModal";
+import HistoryDrawer from "../../../components/drawers/history/HistoryDrawer";
 import { ClientOrdersTableContextProvider } from "@/context/ClientOrdersTableContext";
-import ClientOrdersTableContextWrapper from "./components/ClientOrdersTableContextWrapper";
+import ClientOrdersTableContextWrapper from "../../../components/orders/clientOrder/ClientOrdersTableContextWrapper";
 export default function MainView () {
 
   

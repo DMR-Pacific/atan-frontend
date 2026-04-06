@@ -1,4 +1,4 @@
-import { getDashboardStats } from "@/services/OrderStatsService"
+import { getDashboardStats } from "@/services/orders/OrderStatsService"
 import { DashboardStats } from "@/types/stats/DashboardStats"
 import { useCallback, useEffect, useState } from "react"
 import { toast } from "sonner"

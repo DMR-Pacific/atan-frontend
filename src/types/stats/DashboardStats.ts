@@ -1,4 +1,4 @@
-import { ClientOrderDto } from "../orders/ClientOrderDto"
+import { ClientOrderDto } from "../orders/ClientOrderTypes"
 import { CountDto } from "./CountDto"
 import { SumByClientTypeDto } from "./SumByTypeDto"
 

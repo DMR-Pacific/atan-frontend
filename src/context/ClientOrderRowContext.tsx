@@ -1,5 +1,4 @@
-import { ClientOrder } from "@/types/orders/ClientOrder";
-import { ClientOrderMaster } from "@/types/orders/ClientOrderMaster";
+import { ClientOrderMaster } from "@/types/orders/ClientOrderTypes";
 import { createContext, useContext } from "react";
 
 export interface ClientOrderRowContext {

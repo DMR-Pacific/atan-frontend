@@ -8,14 +8,14 @@ export const dmrpacific_api = axios.create({
     responseType: "json"
 })
 
-export const atlas_api = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_ATLAS_API_URL}`,
+export const atan_api = axios.create({
+    baseURL: `${process.env.NEXT_PUBLIC_ATAN_API_URL}`,
     responseType: "json"
 })
 
 
-export const atlas_api_authorized = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_ATLAS_API_URL}`,
+export const atan_api_authorized = axios.create({
+    baseURL: `${process.env.NEXT_PUBLIC_ATAN_API_URL}`,
     responseType: "json"
 })
 
@@ -27,7 +27,7 @@ export const dmrpacific_api_authorized = axios.create({
 })
 
 
-atlas_api_authorized.interceptors.request.use(async request => {
+atan_api_authorized.interceptors.request.use(async request => {
 
     // Check if access token is expired
     let expiration = new Date(String(localStorage.getItem("expiration")))

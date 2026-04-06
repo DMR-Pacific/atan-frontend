@@ -1,14 +1,17 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 import { DmrOrdersSubTableContext } from "./DmrOrdersSubTableContext";
 import { toast } from "sonner";
-import { deleteClientOrderList, deleteDmrOrderList } from "@/services/OrderService";
-import { DmrOrderDto } from "@/types/orders/DmrOrderDto";
+import { bulkDeleteClientOrders } from "@/services/orders/ClientOrderService";
+import { DmrOrderDto } from "@/types/orders/DmrOrderTypes";
 import { doSearchDmrOrders } from "@/utils/dmrOrders/doSearchDmrOrders";
 import { SortByType } from "@/types/api/SortByType";
 import { SortDirectionType } from "@/types/api/SortDirectionType";
 import { ViewMode } from "@/types/ViewMode";
 import { useOrdersContext } from "./OrdersContext";
 import { OrderId } from "@/types/orders/order-types";
+import { GlobalOperator, SearchRequestDto } from "@/types/api/SearchRequestDto";
+import { Operation } from "@/types/api/FilterCriteriaDto";
+import { bulkDeleteDmrOrders } from "@/services/orders/DmrOrderService";
 
 export interface DmrOrdersTableContext {
 
@@ -85,8 +88,31 @@ export const DmrOrdersTableContextProvider =({children} : {children: ReactNode})
 
     
     const fetchDmrOrders = async () => {
-        const tempOrders = await doSearchDmrOrders(searchValue, sortBy, sortDirection)
-        
+
+        const searchRequestDto: SearchRequestDto = {
+            filters: [],
+            sortBy: sortBy,
+            sortDir: sortDirection,
+            globalOperator: GlobalOperator.OR
+        }
+        if (searchValue) {
+            searchRequestDto.filters.push(...[
+                {
+                    column: "label",
+                    value: searchValue.trim(),
+                    operation: Operation.LIKE
+
+                },
+                {
+                    column: "manufacturerOrders.orderNumber",
+                    value: searchValue.trim(),
+                    operation: Operation.LIKE
+
+                }
+            ])
+        }
+
+        const tempOrders = await doSearchDmrOrders(searchRequestDto)
         if (tempOrders) {
             setDmrOrderIds(tempOrders.map(order => order.id))
             addDmrDtosToMaster(tempOrders, true, true)
@@ -96,7 +122,7 @@ export const DmrOrdersTableContextProvider =({children} : {children: ReactNode})
 
     const doDeleteClientOrderList = async ( ) => {
         try {
-            const response = await deleteClientOrderList(selectedClientRows)
+            const response = await bulkDeleteClientOrders(selectedClientRows)
             toast.success(`Deleted client orders (${selectedClientRows.length}) successfully.`)
             // doGetAllOrdersByGroup()
             setSelectedClientRows([])
@@ -109,7 +135,7 @@ export const DmrOrdersTableContextProvider =({children} : {children: ReactNode})
 
     const doDeleteDmrOrderList = async () => {
         try {
-            const response = await deleteDmrOrderList(selectedDmrRows)
+            const response = await bulkDeleteDmrOrders(selectedDmrRows)
             toast.success(`Deleted DMR orders (${selectedDmrRows.length}) successfully.`)
             fetchDmrOrders()
             setSelectedDmrRows([])

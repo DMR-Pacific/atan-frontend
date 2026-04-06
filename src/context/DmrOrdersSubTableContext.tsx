@@ -1,11 +1,10 @@
 import { BaseReferenceType } from "@/types/BaseReferenceType";
-import { DmrOrderDto } from "@/types/orders/DmrOrderDto";
+import { DmrOrderDto } from "@/types/orders/DmrOrderTypes";
 import { OrderId } from "@/types/orders/order-types";
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 
 export interface DmrOrdersSubTableContext {
     subDmrOrderIds: OrderId[]
-    fetchDmrOrdersByClientOrderId: () => void
     handleOrderCheck: (dmrOrderId: number) => void  // handles check state of dmr orders
     
     warnUnlink: (dmrOrderId: number) => void
@@ -16,7 +15,6 @@ export interface DmrOrdersSubTableContext {
     isSelectDisabled: boolean
     setIsSelectDisabled: Dispatch<SetStateAction<boolean>>
 
-    doCreateDmrOrderForClientOrder:  (orderId: number) => void
 }
 
 export const DmrOrdersSubTableContext = createContext<DmrOrdersSubTableContext | undefined>(undefined)

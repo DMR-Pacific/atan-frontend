@@ -1,4 +1,4 @@
-import { ClientOrderDto } from "@/types/orders/ClientOrderDto"
+import { ClientOrderDto } from "@/types/orders/ClientOrderTypes"
 
 type Distribution = Record<number, { count: number, percentage: number}>
 

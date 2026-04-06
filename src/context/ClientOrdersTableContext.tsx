@@ -4,13 +4,17 @@ import { SortDirectionType } from "@/types/api/SortDirectionType"
 import { BaseReferenceType } from "@/types/BaseReferenceType"
 import { createContext, ReactNode, useContext, useEffect, useState } from "react"
 import { GroupId, useOrdersContext } from "./OrdersContext"
-import { deleteClientOrderList, deleteDmrOrderList, searchClientOrders } from "@/services/OrderService"
+import { bulkDeleteClientOrders, searchClientOrders } from "@/services/orders/ClientOrderService"
 import { toast } from "sonner"
 import { getReference } from "@/services/ReferenceService"
 import { OrderId } from "@/types/orders/order-types"
 import { summarizeClientOrders, Summary } from "@/utils/summary/summarizeClientOrders"
-import { ClientOrderDto } from "@/types/orders/ClientOrderDto"
+
 import { Page } from "@/types/Page"
+import { ClientOrderDto } from "@/types/orders/ClientOrderTypes"
+import { GlobalOperator, SearchRequestDto } from "@/types/api/SearchRequestDto"
+import { Operation } from "@/types/api/FilterCriteriaDto"
+import { bulkDeleteDmrOrders } from "@/services/orders/DmrOrderService"
 
 
 
@@ -64,7 +68,7 @@ const ClientOrdersTableContext = createContext<ClientOrdersTableContextType | un
 
 export const ClientOrdersTableContextProvider = ({children} : {children : ReactNode}) => {
     const { 
-
+        doSearchClientOrders,
         setShowErrorModal, addClientDtosToMaster,
     } = useOrdersContext()
 
@@ -90,16 +94,16 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
     // The client orders are grouped differently depending on group by. The key is the name of the group
     // Example: If groupBy is priority, the groupId's would be 1 == 'Critical' , 2 == 'High', etc
     // Client orders are grouped. The key of the object is the id of 
-    const [clientOrdersByGroup, setClientOrdersByGroup] = useState<{[key: number]: OrderId[]}>({})
+    const [clientOrdersByGroup, setClientOrdersByGroup] = useState<Record<number, OrderId[]>>({})
 
 
-    
     const doSearchOrders = async ( groupId: number) => {
         /**
          * Map groupBy value to column 
          * For each table group, filter it by 
         */
         let column = ""
+
         if (groupBy == "priority") column = "priorityId"
         else if (groupBy == "status") column = "statusId"
         else if (groupBy == "category") column = "categoryId"
@@ -116,24 +120,43 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
             let searchDto: {[key:string]: any} = {
                 [column]: groupId,
             }
-            if (searchValue) searchDto['label'] = searchValue
-            const res = await searchClientOrders(searchDto, sortBy, sortDirection)
-            const data: Page<ClientOrderDto> = res.data
-            console.log("SEACH RES", res)
-            addClientDtosToMaster(data.content, true, true)
 
+            let searchRequestDto: SearchRequestDto = {
+                globalOperator: GlobalOperator.AND,
+                sortBy: sortBy,
+                sortDir: sortDirection,
+                filters: [
+                    {
+                        column: column,
+                        value: groupId,
+                        operation: Operation.EQUAL
+                    },
+                    {
+                        column: "label",
+                        value: searchValue,
+                        operation: Operation.LIKE
+                    }
+
+                ]
+            }
+
+
+            const data = await doSearchClientOrders(searchRequestDto)
+            // const data: Page<ClientOrderDto> = res.data
+            
+            if (!data) return
             // put the id's in groups and the pages will reference the masterStore for the full clientOrder record
             setClientOrdersByGroup(prev => {
                 return ({
                     ...prev,
-                    [groupId]: data.content.map((order: ClientOrderDto) => order.id)
+                    [groupId]: data.map((order: ClientOrderDto) => order.id)
                 })
             })
             
             setSummaries(prev => {
                 return ({
                     ...prev,
-                    [groupId]: summarizeClientOrders(data.content)
+                    [groupId]: summarizeClientOrders(data)
                 })
             })
 
@@ -176,7 +199,7 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
     const doDeleteClientOrderList = async ( ) => {
         try {
 
-            const response = await deleteClientOrderList(selectedClientRows)
+            const response = await bulkDeleteClientOrders(selectedClientRows)
             toast.success(`Deleted client orders (${selectedClientRows.length}) successfully.`)
             
             setSelectedClientRows([])
@@ -189,7 +212,7 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
 
     const doDeleteDmrOrderList = async () => {
         try {
-            const response = await deleteDmrOrderList(selectedDmrRows)
+            const response = await bulkDeleteDmrOrders(selectedDmrRows)
             toast.success(`Deleted DMR orders (${selectedDmrRows.length}) successfully.`)
 
             setSelectedDmrRows([])
@@ -229,6 +252,7 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
         // })
         doGetAllOrdersByGroup() 
     }, [groups, searchValue, sortBy, sortDirection])
+
         
     return (
         <ClientOrdersTableContext.Provider

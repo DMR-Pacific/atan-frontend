@@ -1,8 +1,8 @@
 'use client' 
 import { OrdersContextProvider } from "@/context/OrdersContext";
 import { ReactNode, useEffect } from "react";
-import HistoryDrawer from "./components/historyDrawer/HistoryDrawer";
-import LayoutContextWrapper from "./components/LayoutContextWrapper";
+import HistoryDrawer from "../../../components/drawers/history/HistoryDrawer";
+import LayoutContextWrapper from "@/components/wrappers/LayoutContextWrapper";
 import { redirect } from "next/navigation";
 
 export default function Layout ({children} : {children: ReactNode}) {
@@ -12,11 +12,11 @@ export default function Layout ({children} : {children: ReactNode}) {
 
     
     return (
-                <OrdersContextProvider>
-                    <LayoutContextWrapper />
-            
-                    {children}
-                </OrdersContextProvider>
+        <OrdersContextProvider>
+            <LayoutContextWrapper />
+    
+            {children}
+        </OrdersContextProvider>
         
     )
 }

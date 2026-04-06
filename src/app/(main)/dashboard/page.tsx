@@ -22,8 +22,8 @@ import {
   YAxis,
   CartesianGrid,
 } from 'recharts'
-import { StatCard } from './components/StatCard'
-import { getDashboardStats } from '@/services/OrderStatsService'
+import { StatCard } from '../../../components/cards/StatCard'
+import { getDashboardStats } from '@/services/orders/OrderStatsService'
 import { toast } from 'sonner'
 import { useDashboardStats } from '@/hooks/useDashboardStats'
 import { useReference } from '@/hooks/useReference'
@@ -364,8 +364,8 @@ export default function Dashboard() {
                         className='flex -space-x-2'
                     >
 
-                        {order.assignedToList.length > 0 &&
-                        order.assignedToList.map((assignedUser, i) => {
+                        {order.assignedUsers.length > 0 &&
+                        order.assignedUsers.map((assignedUser, i) => {
                             return (
                                 <Avatar 
                                     key={i}
