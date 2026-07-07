@@ -1,5 +1,4 @@
-
-
+# Atan DOCS
 
 ### Transferring to production (docker registry)
 
@@ -68,9 +67,10 @@ docker pull dockreg.dmrpacific.com/atan-frontend:prod.latest
 ```
 
 #### Step 4 Stop image (from prod server)
-
+```
 docker stop atan-frontend # stop the old container
 docker rm atan-frontend # remove the old container
+```
 
 #### Step 5 Start image (from prod server)
 
@@ -98,19 +98,13 @@ docker run -d \
   dockreg.dmrpacific.com/atan-frontend:prod.6.22.26
 ```
 
-### Extra Step - Restarting an older image if current does not work
-
-docker stop atan-frontend # stop the old container
-docker rm atan-frontend # remove the old container
-
-### Adding a new user to atan
+### Adding new user
 
 1. Connect to the db using pgadmin4
-2. Insert into cms.eesuacc
-
-- ensure to set oasts (status) to 'A'
-- ensure set oactid to 0 
-  - if not there will be an error fetching assignable users
+2. Insert into cms.eesuacc 
+  - ensure to set oasts (status) to 'A'
+  - ensure set oactid to 0 
+    - if not there will be an error fetching assignable users
 3. Insert roles into cms.eesugm
 
 ### Transferring to production without a docker registry
@@ -155,86 +149,13 @@ docker run -d -p 4000:4000 atan-frontend
 
 # Project Setup
 
+```
 npm install --save-dev dotenv-cli
 
 npm install --save-dev rimraf
 
 npm install --save-dev cpx
-
-keeping updated for time and updated_by
-https://medium.com/@tbobm/tracking-row-level-changes-in-postgresql-4455f91ab8d1
-
-tracking changes in postgresql by having a hstory table
-https://www.cybertec-postgresql.com/en/tracking-changes-in-postgresql/
-
-INSERT INTO cms.eesuacc (oauid, oapwd, oasts, oalnam, oafnam, oami, oaname, oafoad)
-VALUES
-('RICHE_TAITANO', '$2a$10$wB9TbZAPlME5mkoJV4OiOOnydS6.RNz6kjra5HhYw3hR2o12lS4ZO', 'A', 'Taitano', 'Riche', '', 'Taitano, Riche', 'Mr.'),
-('CADE_TAITANO', '$2a$10$wB9TbZAPlME5mkoJV4OiOOnydS6.RNz6kjra5HhYw3hR2o12lS4ZO', 'A', 'Taitano', 'Cade', '', 'Taitano, Cade', 'Mr.'),
-('NOAH_ELBO', '$2a$10$wB9TbZAPlME5mkoJV4OiOOnydS6.RNz6kjra5HhYw3hR2o12lS4ZO', 'A', 'Elbo', 'Noah', 'L', 'Elbo, Noah', 'Mr.');
-
-INSERT INTO CMS.EESUGM (OMUID, OMGID)
-VALUES
-('RICHE_TAITANO', 'TRACKER'),
-('NOAH_ELBO', 'TRACKER'),
-
-('CADE*TAITANO', 'TRACKER');
--- SELECT * FROM CMS.EESUACC
-SELECT \_ FROM CMS.EESUGM
-
-## Pushing changes to dev/prod environment
-
-Before this section you must:
-
-- Have your build folder ready (prod or dev).
-- Have an active user account for dev server (10.69.6.40) and prod server (10.69.88.38). If you do not have one, request for one.
-- Set up your filezilla account for file transfer (see 'Setting Up FileZilla for File Transfer' section) to the server.
-- Have MOBAX installed and setup for SSH sessions with the servers. (see 'Setting up MOBAX')
-
-Using FileZilla, connect to the server and transfer the build/dev folder or build/prod to a folder in your user account's home directory.
-
-Open MOBAX for the server and log in as 'nodeuser' (the account we use to manage the frontend's pm2 instance)
-
-Navigate to the project directory.
-
-```bash
-cd /home/sites/frontends/dmrpacific
 ```
-
-Stop the application from running.
-
-```bash
-pm2 stop dmrpacific
-```
-
-Delete the old build.
-
-```bash
-sudo rm -fr build
-```
-
-Transfer the new build into the project directory as 'build' from wherever you stored it in your home directory.
-
-Replace {{ENVIRONMENT}} with either dev or prod, depending on which build you're deploying.
-
-```bash
-sudo mv /home/noahe/{{ENVIRONMENT}} build
-```
-
-Navigate to build directory and install packages
-
-```bash
-cd build
-sudo npm install
-```
-
-Start the application using pm2:
-
-```bash
-pm2 start atlas
-```
-
-You should be able to access the application directly through port 3000. However since we've configured a reverse proxy with NGINX, the server (with HTTPS support) is accessible only via the default ports 443 and 80.
 
 # TailAdmin Next.js - Free Next.js Tailwind Admin Dashboard Template
 
