@@ -6,6 +6,7 @@ import { useClientOrdersTableContext } from '@/context/ClientOrdersTableContext'
 
 export default function Tables () {
   const { groups } = useClientOrdersTableContext()
+  
     return (
         <div className="w-full pb-20">
           {groups.sort(sortByOrderIndexDesc).map((group, i) => {

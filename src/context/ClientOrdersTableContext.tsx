@@ -16,8 +16,6 @@ import { GlobalOperator, SearchRequestDto } from "@/types/api/SearchRequestDto"
 import { Operation } from "@/types/api/FilterCriteriaDto"
 import { bulkDeleteDmrOrders } from "@/services/orders/DmrOrderService"
 
-
-
 export interface Orders {
     // key is the groupId
     [key: GroupId]: Page<ClientOrderDto>
@@ -122,7 +120,7 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
             }
 
             let searchRequestDto: SearchRequestDto = {
-                globalOperator: GlobalOperator.AND,
+                globalOperator: GlobalOperator.OR,
                 sortBy: sortBy,
                 sortDir: sortDirection,
                 filters: [
@@ -133,6 +131,11 @@ export const ClientOrdersTableContextProvider = ({children} : {children : ReactN
                     },
                     {
                         column: "label",
+                        value: searchValue,
+                        operation: Operation.LIKE
+                    },
+                    {
+                        column: "notes",
                         value: searchValue,
                         operation: Operation.LIKE
                     }

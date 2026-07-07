@@ -8,7 +8,7 @@ RUN npm install --frozen-lockfile
 
 # ==========================
 #  Stage 2: Build the application
-FROM node:20-alpine as builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=base /app/node_modules ./node_modules
 COPY . .
@@ -36,7 +36,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 
 # Set the environment variable for production 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # This is the port it runs in the container
 EXPOSE 3000

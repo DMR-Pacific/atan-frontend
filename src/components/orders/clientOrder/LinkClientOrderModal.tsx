@@ -5,7 +5,6 @@ import { Operation } from "@/types/api/FilterCriteriaDto";
 import { GlobalOperator, SearchRequestDto } from "@/types/api/SearchRequestDto";
 import { DmrOrderDto } from "@/types/orders/DmrOrderTypes";
 import { OrderId } from "@/types/orders/order-types";
-import { doSearchDmrOrders } from "@/utils/dmrOrders/doSearchDmrOrders";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";

@@ -108,6 +108,11 @@ export const DmrOrdersTableContextProvider =({children} : {children: ReactNode})
                     value: searchValue.trim(),
                     operation: Operation.LIKE
 
+                },
+                {
+                    column: "notes",
+                    value: searchValue.trim(),
+                    operation: Operation.LIKE
                 }
             ])
         }
